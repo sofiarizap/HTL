@@ -9,5 +9,6 @@ public class Cuenta {
     @SequenceGenerator(name = "native", sequenceName = "native")
     private long id;
 
+    public Cuenta(){ }
 }
 

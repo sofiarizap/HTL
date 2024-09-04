@@ -8,6 +8,6 @@ public class Orden {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "native")
     @SequenceGenerator(name = "native", sequenceName = "native")
     private long id;
-    private Cliente cliente;
-    private Producto producto;
+
+    public Orden(){ }
 }

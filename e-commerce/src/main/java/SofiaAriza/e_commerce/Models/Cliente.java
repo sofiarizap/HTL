@@ -14,18 +14,18 @@ public class Cliente {
     private String email;
     private String clave;
     private String telefono;
-    private Carrito carrito;
+
 
 
     public Cliente(){ }
-    public Cliente(String nombre, String direccion, String ciudad, String email, String clave, String telefono, Carrito carrito) {
+    public Cliente(String nombre, String direccion, String ciudad, String email, String clave, String telefono) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.email = email;
         this.clave = clave;
         this.telefono = telefono;
         this.ciudad = ciudad;
-        this.carrito = carrito;
+
     }
     public Long getId(){return id;}
 

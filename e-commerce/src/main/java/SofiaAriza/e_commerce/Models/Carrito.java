@@ -6,17 +6,17 @@ import jakarta.persistence.*;
 public class Carrito {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_seq")
-        @SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_id_seq", allocationSize = 1)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "native")
+        @SequenceGenerator(name = "native", sequenceName = "native")
         private long id;
-        private Cliente cliente;
-        private Producto producto;
+
+
         private String ciudad;
         private String email;
         private String clave;
         private String telefono;
 
-
+        public Carrito(){ }
         public Carrito(String nombre, String direccion, String ciudad, String email, String clave, String telefono, Carrito carrito) {
             this.email = email;
             this.clave = clave;

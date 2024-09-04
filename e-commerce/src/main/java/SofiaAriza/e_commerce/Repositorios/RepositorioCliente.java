@@ -4,7 +4,10 @@ import SofiaAriza.e_commerce.Models.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
+
 @RepositoryRestResource
 public interface RepositorioCliente extends JpaRepository<Cliente, Long> {
-    Cliente findByEmail(String email);
+    List<Cliente> findByEmail(String email);
+
 }
