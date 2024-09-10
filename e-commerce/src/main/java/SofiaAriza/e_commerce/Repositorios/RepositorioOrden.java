@@ -1,4 +1,2 @@
-package SofiaAriza.e_commerce.Repositorios;
-
-public class RepositorioOrden {
+package SofiaAriza.e_commerce.Repositorios;public interface RepositorioOrden {
 }
