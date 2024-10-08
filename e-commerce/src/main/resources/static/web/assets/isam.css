@@ -1,0 +1,136 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+.font1 {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:100;
+    font-style: normal;
+    text-align: center;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.hero-section {
+    margin-bottom: 2rem;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 60vh;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 5px;
+}
+.imglogo {
+    height: 70px;
+    width: 150px;
+    margin-left: 5rem;
+}
+.nav{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    margin-top: 1.3rem;
+    padding: 0;
+    background-color: white;
+}
+.alerta{
+    width: 100;
+    background-color: rgb(0, 0, 0);
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    height: 23px;
+    color: white;
+}
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.special-offers .card {
+    border-left: 5px solid #007bff;
+}
+
+
+footer {
+    margin-top: auto;
+  }
+  
+  footer h5 {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  footer a {
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: #17a2b8 !important;
+  }
+  
+  .footer-nav a {
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .social-icons a {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+  
+  @media (max-width: 767px) {
+    .footer-nav ul {
+        text-align: center;
+    }
+  
+    .footer-nav li {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  footer {
+    animation: fadeIn 1s ease-in-out;
+  }
+  .footerimg{
+    height: 100px;
+    width: 260px;
+  }
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 40vh;
+    }
+}

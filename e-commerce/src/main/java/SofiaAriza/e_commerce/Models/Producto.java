@@ -1,6 +1,8 @@
 package SofiaAriza.e_commerce.Models;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 public class Producto {
@@ -18,6 +20,9 @@ public class Producto {
 
     private boolean activo;
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    private List<ProductoPedido> productosPedidos;
+
     public Producto(){ }
     public Producto(String nombre, double precio, int stock, String descripcion, String imagenUrl, String ubicacion) {
         this.nombre = nombre;
@@ -28,4 +33,37 @@ public class Producto {
         this.activo = true;
         this.ubicacion = ubicacion;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public List<ProductoPedido> getProductosPedidos() {
+        return productosPedidos;
+    }
+
+    public void setProductosPedidos(List<ProductoPedido> productosPedidos) {
+        this.productosPedidos = productosPedidos;
+    }
+
 }

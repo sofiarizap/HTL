@@ -1,53 +1,83 @@
 package SofiaAriza.e_commerce.Models;
 import jakarta.persistence.*;
-
+import java.util.List;
 
 @Entity
 public class Cliente {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "native")
-    @SequenceGenerator(name = "native", sequenceName = "native")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nombre;
-    private String direccion;
-    private String ciudad;
     private String email;
-    private String clave;
-    private String telefono;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Pedido> pedidos;
 
-    public Cliente(){ }
-    public Cliente(String nombre, String direccion, String ciudad, String email, String clave, String telefono) {
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private CarritoCompra carritoCompra;
+
+    // Constructor
+    public Cliente() {}
+
+    public Cliente(String nombre, String email, Usuario usuario) {
         this.nombre = nombre;
-        this.direccion = direccion;
         this.email = email;
-        this.clave = clave;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
-
+        this.usuario = usuario;
     }
-    public Long getId(){return id;}
 
-    public String getEmail(){
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String Email){
-        this.email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getNombre(){
-        return nombre;
-    }
-    public void setNombre(String nombre){
-        this.nombre = nombre;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public String getClave() { return clave;}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-    public void setPassword(String password) { this.clave = password;}
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
 
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
+    public CarritoCompra getCarritoCompra() {
+        return carritoCompra;
+    }
 
+    public void setCarritoCompra(CarritoCompra carritoCompra) {
+        this.carritoCompra = carritoCompra;
+    }
 }
+

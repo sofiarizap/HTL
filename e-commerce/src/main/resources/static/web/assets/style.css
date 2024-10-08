@@ -4,13 +4,342 @@
   box-sizing: border-box;
   font-family:Arial, Helvetica, sans-serif ;
   font-style:initial;
-
+  
+}
+.font1 {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:100;
+  font-style: normal;
+  text-align: center;
+}
+.whatsappmodal{
+  z-index: 100;
 }
 .imglogo {
-  height: 40px;
-  width: 100px;
+  height: 70px;
+  width: 150px;
+  margin-left: 5rem;
 }
-.usuario{
+.imgbaner{
+  height: 470px;
+  width: 100%;
+  margin-top: 2rem;
+}
+.nav{
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  margin-top: 1.3rem;
+  padding: 0;
+  background-color: white;
+}
+.alerta{
+  width: 100;
+  background-color: rgb(0, 0, 0);
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+  height: 23px;
+  color: white;
+}
+.usuario {
   height: 20px;
   width: 20px;
+  margin: 0.5rem;
+}
+.carrito{
+  height: 26px;
+  width: 26px;
+  margin: 0.5rem;
+}
+.nav-link{
+  color: white;
+}
+.contenedor1{
+  background-color: black;
+  color: white;
+  top: 3rem;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.acerca{
+  width: 40%;
+  padding: 2rem 0 0 1rem;
+
+}
+.productoscard{
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.articulofoto{
+  height: 170px;
+  width: 90px;
+  padding: 16px;
+}
+.cardproducto{
+  margin: 1rem;
+}
+.contenedorprecio{
+  display: flex ;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+.servicios{
+  display: flex;
+  background-color: black;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2rem;
+}
+.imgsercivios{
+  width: 300px;
+  height: 100px;
+}
+
+.cta {
+  margin: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.cta span {
+  padding-bottom: 7px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  padding-right: 15px;
+  text-transform: uppercase;
+}
+
+.cta svg {
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active svg {
+  transform: scale(0.9);
+}
+
+.hover-underline-animation {
+  position: relative;
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.cajaserv{
+  display: flex;
+  flex-direction: column;
+}
+.imgcarrusel{
+  height: 500px;
+}
+
+--footer 
+
+footer {
+  margin-top: auto;
+}
+
+footer h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+footer a {
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #17a2b8 !important;
+}
+
+.footer-nav a {
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.social-icons a {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+  .footer-nav ul {
+      text-align: center;
+  }
+
+  .footer-nav li {
+      display: block;
+      margin-bottom: 0.5rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+footer {
+  animation: fadeIn 1s ease-in-out;
+}
+.footerimg{
+  height: 100px;
+  width: 260px;
+}
+/* From Uiverse.io by WhiteNervosa */ 
+.customCheckBoxHolder {
+  margin: 5px;
+  display: flex;
+}
+
+.customCheckBox {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 8px;
+  background-color: rgba(0, 0, 0, 0.16);
+  border-radius: 0px;
+  color: rgba(0, 0, 0, 0.7);
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 300ms;
+  transition-property: color, background-color, box-shadow;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
+  outline: none;
+  justify-content: center;
+  min-width: 55px;
+}
+
+.customCheckBox:hover {
+  background-color: #2c2c2c;
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBox .inner {
+  font-size: 18px;
+  font-weight: 400;
+  pointer-events: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 300ms;
+  transition-property: transform;
+  transform: translateY(0px);
+}
+
+.customCheckBox:hover .inner {
+  transform: translateY(-2px);
+}
+
+/* Multiple Checkboxes can be chained together for a radio input */
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-right: 0px;
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-left: 0px;
+}
+
+.customCheckBoxInput {
+  display: none;
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox {
+  background-color: #000000;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(255, 255, 255, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox .inner {
+  transform: translateY(-2px);
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox:hover {
+  background-color: #000000;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
+}
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+  transform: translateY(-2px);
+}
+.imgg{
+  height: 400px;
+  margin: 1rem 0;
+}
+.contenedorgrupos{
+  justify-content: space-evenly;
+  align-items: center;
+  color: #000;
+  background-color: #fff;
+  padding: 10px;
+  margin: 1rem;
+}
+.carru-grupo{
+  width:  40%;
+  height: 400px;
+}
+.columnas{
+  flex-direction: column;
+  display: flex;
+}
+.textocursivo{
+  font-weight: 200;
+  font-size: 1rem;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+.pequeno{
+  text-align: center;
+  text-transform:uppercase;
+  justify-content: center;
+  
 }
