@@ -21,6 +21,10 @@
   width: 150px;
   margin-left: 5rem;
 }
+.no:hover{
+  background-color: #fff;
+  color: #000 !important;
+}
 .imgbaner{
   height: 470px;
   width: 100%;
@@ -73,14 +77,15 @@
 
 }
 .mobile{
-  max-height: 40vh;
+  max-height: 95%;
 }
 .fondomobile{
   background-color: rgb(165, 159, 159);
+  max-height: 100%;
+  margin: 0 !important  ;
 }
 .grande{
   width: 95%;
-  height: 600px;
   margin: 0 !important  ;
 }
 .productoscard{
@@ -91,7 +96,7 @@
   flex-wrap: wrap;
 }
 .autor{
-  font-size: 7px;
+  font-size: 9px;
 }
 .articulofoto{
   height: 170px;
