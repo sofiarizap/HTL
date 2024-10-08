@@ -78,6 +78,11 @@
 .fondomobile{
   background-color: rgb(165, 159, 159);
 }
+.grande{
+  width: 95%;
+  height: 600px;
+  margin: 0 !important  ;
+}
 .productoscard{
   display: flex;
   background-color: black;
