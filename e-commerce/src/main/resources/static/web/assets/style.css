@@ -114,6 +114,7 @@
 }
 .servicios{
   display: flex;
+  flex-direction: column;
   background-color: black;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -121,8 +122,64 @@
   padding: 2rem;
 }
 .imgsercivios{
+  margin-top: 2rem;
   width: 300px;
   height: 100px;
+}
+#social-section{
+  background-color: #dfdfdf;
+}
+
+
+
+.customer-service-section {
+  background-image: url('./imagenes/fondo2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  position: relative;
+}
+
+.customer-service-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.customer-service-section .container-fluid {
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  padding: 10px 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .customer-service-section {
+      text-align: center;
+  }
+  
+  .d-flex {
+      justify-content: center;
+  }
 }
 
 .cta {
@@ -429,7 +486,7 @@ footer {
 }
 
 .hero-section {
-  background-image: url('./imagenes/fondo.jpg');
+  background-image:linear-gradient(to bottom, #0000005b 25%, #000000b5 100%), url(./imagenes/fondo.jpg)  ; 
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -443,7 +500,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.147);
 }
 
 .motto {
@@ -463,5 +520,53 @@ footer {
 @media (max-width: 768px) {
   .motto {
       font-size: 2.5rem;
+  }
+}
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+section {
+  scroll-margin-top: 70px;
+}
+
+.btn-outline-primary,
+.btn-outline-info,
+.btn-outline-danger,
+.btn-outline-success {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-info:hover,
+.btn-outline-danger:hover,
+.btn-outline-success:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0,0,0,.1);
+}
+
+.img-fluid {
+  transition: transform 0.3s ease;
+}
+
+.img-fluid:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .display-4 {
+      font-size: 2.5rem;
+  }
+  
+  .lead {
+      font-size: 1rem;
   }
 }
