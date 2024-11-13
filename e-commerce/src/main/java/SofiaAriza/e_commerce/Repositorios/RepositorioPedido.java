@@ -9,6 +9,8 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface RepositorioPedido extends JpaRepository<Pedido, Long> {
-  // Encontrar todos los pedidos de un cliente específico
+  List<Pedido> findByClienteId(Long clienteId);
+
   List<Pedido> findByCliente(Cliente cliente);
 }
+

@@ -14,9 +14,12 @@ public class CarritoCompraController {
   @Autowired
   private CarritoCompraService carritoCompraService;
 
-  @PostMapping("/{clienteId}/agregar")
-  public ResponseEntity<CarritoCompra> agregarProductoAlCarrito(@PathVariable Long clienteId, @RequestBody ItemCarrito itemCarrito) {
-    CarritoCompra carritoCompra = carritoCompraService.agregarProducto(clienteId, itemCarrito);
+  @PostMapping("/{clienteId}/agregar/{productoId}")
+  public ResponseEntity<CarritoCompra> agregarProductoAlCarrito(
+          @PathVariable Long clienteId,
+          @PathVariable Long productoId,
+          @RequestParam int cantidad) {
+    CarritoCompra carritoCompra = carritoCompraService.agregarProductoAlCarrito(clienteId, productoId, cantidad);
     return ResponseEntity.ok(carritoCompra);
   }
 
@@ -26,9 +29,9 @@ public class CarritoCompraController {
     return ResponseEntity.ok(carritoCompra);
   }
 
-  @DeleteMapping("/{clienteId}/eliminar/{itemId}")
-  public ResponseEntity<Void> eliminarProductoDelCarrito(@PathVariable Long clienteId, @PathVariable Long itemId) {
-    carritoCompraService.eliminarProducto(clienteId, itemId);
+  @DeleteMapping("/{clienteId}/eliminar/{productoId}")
+  public ResponseEntity<Void> eliminarProductoDelCarrito(@PathVariable Long clienteId, @PathVariable Long productoId) {
+    carritoCompraService.eliminarProductoDelCarrito(clienteId, productoId);
     return ResponseEntity.noContent().build();
   }
 

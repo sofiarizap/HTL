@@ -18,7 +18,7 @@ public class HtlApplication {
 	public CommandLineRunner initData(RepositorioCliente repositorioCliente){
 
 		return (args) -> {
-			Cliente sofia =new Cliente("sofia", "direccion","ciudad","email","clave","tel");
+			Cliente sofia =new Cliente("sofia", "direccion");
 			System.out.println(sofia.getNombre());
 			repositorioCliente.save(sofia);
 	};}

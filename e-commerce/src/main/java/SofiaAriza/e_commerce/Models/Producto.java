@@ -58,6 +58,14 @@ public class Producto {
         this.precio = precio;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public List<ProductoPedido> getProductosPedidos() {
         return productosPedidos;
     }

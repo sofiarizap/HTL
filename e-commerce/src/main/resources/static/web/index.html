@@ -18,21 +18,25 @@
 <body>
   <header class="hero-section">
   <div class="container h-100">
-      <div class="row h-100 align-items-center">
-          <div class="col-12 text-center mt-4">
-            <h1 class="motto font1 text-white mb-3">EN SOLUCIONES HTL</h1>
-              <p class=" text-white motto">Proveer a las Fuerzas militares y a los profesionales de seguridad con equipos y productos de alta calidad que garanticen su protección, eficiencia y éxito en el cumplimiento de sus misiones. nos comprometemos a ofrecer innovación, durabilidad y un servicio excepcional para satisfacer las necesidades de quienes sirven y protegen.</h1>
+      <div class="row h-100 align-items-end">
+          <div class="col-12 text-start mb-5 ">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link motto font1 text-white" type="button" href="#conocenos"><h1 class=" font1 fw-bold">CONOCENOS</h1></a>
           </div>
       </div>
   </div>
   </header>
-  <section class="mission-vision py-5 bg-black">
+  <section class="mission-vision py-5 ">
     <div class="container ">
-        <div class="row ">
+      <div class="col-12 text-center mt-4">
+        <h2 class="card-title text-center mb-4 font1">NUESTRO LEMA</h2>
+          <p class="card-text mb-5">Proveer a las Fuerzas militares y a los profesionales de seguridad con equipos y productos de alta calidad que garanticen su protección, eficiencia y éxito en el cumplimiento de sus misiones. nos comprometemos a ofrecer innovación, durabilidad y un servicio excepcional para satisfacer las necesidades de quienes sirven y protegen.</h1>
+      </div>
+        <div id="conocenos" class="row ">
             <div class="col-md-6 mb-4 mb-md-0">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-4 font1">NUESTRA MISIÓN</h2>
+                        <h2 class="motto font1  mb-3">NUESTRA MISIÓN</h2>
                         <p class="card-text">Nuestra misión es liderar la innovación tecnológica, proporcionando soluciones que mejoren la vida de las personas y contribuyan al progreso sostenible de la sociedad.</p>
                     </div>
                 </div>
@@ -40,7 +44,7 @@
             <div class="col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-4 font1">NUESTRA VISIÓN</h2>
+                        <h2 class="motto font1  mb-3">NUESTRA VISIÓN</h2>
                         <p class="card-text">Aspiramos a ser reconocidos globalmente como pioneros en el desarrollo de tecnologías transformadoras, inspirando un futuro donde la innovación y la sostenibilidad vayan de la mano.</p>
                     </div>
                 </div>
@@ -133,7 +137,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
-        <a type="button" href="https://api.whatsapp.com/send/?phone=3224325980"  class="btn btn-primary">SI</a>
+        <a type="button" href="https://api.whatsapp.com/send/?phone=3118914319"  class="btn btn-primary">SI</a>
       </div>
     </div>
   </div>
@@ -160,14 +164,46 @@
             <a class="nav-link" href="#sedes">WSM Confecciones</a>
           </li>
         </ul>
-        
-        <img src="./assets/imagenes/carrito-de-compras.png"  href="./carrito.html" type="button" class=" btn carrito">
+        <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
         <img src="./assets/imagenes/usuario.png" alt="usuario" class="usuario" data-bs-toggle="modal" data-bs-target="#authModal" type="button" alt="carrito" class=" btn carrito">
       </div>
     </div>
   </nav>
   <div class="container-fluid">
+    <div class="container py-5">
+      <h1 class="text-center mb-5 font1">NUESTROS ARTICULOS</h1>
+      <div class="row g-4 justify-content-center">
+          <div class="col-md-4 col-sm-6">
+              <button class="category-btn" style="background-image: url('https://img.freepik.com/free-photo/person-with-gothic-style-costume-performing-drama-world-theatre-day_23-2151182208.jpg?t=st=1729128683~exp=1729132283~hmac=1cda75eaeee5a158f50ebc7ffccfdaf3f1815c71ad8fecb628a967cd6dd9aad1&w=740');" aria-label="Shop Boots">
+                  <span class="category-text">Botas</span>
+              </button>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <button class="category-btn" style="background-image: url('https://lh4.googleusercontent.com/proxy/Gpj4HYIGu5-HQxtUnhslu3XEsMMvB_xG5uNtuAxSShBuvF3RWq5R2hcMqa6dI2MqnqBgdBuN0aM9sofAEuGaTpDESF7fPMkoTwuEj5EJJvhM0DZRI2EmrklWO9w-TZ2LJ0Kha_gw57lxM6wR6ZQ');" aria-label="Shop Tactical Gear">
+                  <span class="category-text">Elementos Tácticos</span>
+              </button>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <button class="category-btn" style="background-image: url('https://img.freepik.com/free-photo/still-life-soldier-helmet_23-2151633267.jpg?t=st=1729128789~exp=1729132389~hmac=489b6a8eeefd25dad533cd3468d9a7337e859d09f6da60a3744399b77f517a88&w=826');" aria-label="Shop Military Bags">
+                  <span class="category-text">Maletas</span>
+              </button>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <button class="category-btn" style="background-image: url('https://img.freepik.com/free-photo/camouflage-textured-military-uniforms_23-2149341312.jpg?t=st=1729129310~exp=1729132910~hmac=b658db517e8bc4aa1a0e8697cf827a1d7869c3e4cce5d4e5b0d9cc1126ccdade&w=826');" aria-label="Shop Clothing">
+                  <span class="category-text">Ropa</span>
+              </button>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <button class="category-btn" style="background-image: url('https://img.freepik.com/free-photo/woman-getting-ready-her-mission_23-2149222714.jpg?t=st=1729127816~exp=1729131416~hmac=45f38b130024ce4eafc28667d859ce77ac02eb45c16a146152d0dabc3b0e0373&w=826');" aria-label="Shop Hats">
+                  <span class="category-text">Gorras</span>
+              </button>
+          </div>
+      </div>
+  </div>
     <div class="row">
+      <div class="d-flex justify-content-center flex-wrap flex-md-nowrap titulo-catalogo align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 text-center font1">CATÁLOGO</h1>
+    </div>
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky pt-3">
                 <div class="mb-4">
@@ -193,18 +229,17 @@
             </div>
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2 text-center font1">CATÁLOGO</h1>
-            </div>
+            
                 
-            <div class="row justify-content-center bg-black row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
               <div class="card cardproducto" style="width: 15rem;">
                 <img src="./assets/imagenes/articulo.jpg" class="card-img-top articulofoto" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Nombre articulo</h5>
                   <p class="card-text">descripcion articulo</p>
                   <div class="contenedorprecio">
-                    <img src="./assets/imagenes/carrito-de-compras.png" class="carrito" alt="">
+                    <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
+        
                     <p class="mt-3">$100.000</p>
                   </div>
                 </div>
@@ -215,7 +250,8 @@
                   <h5 class="card-title">Nombre articulo</h5>
                   <p class="card-text">descripcion articulo</p>
                   <div class="contenedorprecio">
-                    <img src="./assets/imagenes/carrito-de-compras.png" class="carrito" alt="">
+                    <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
+        
                     <p class="mt-3">$100.000</p>
                   </div>
                 </div>
@@ -226,7 +262,8 @@
                   <h5 class="card-title">Nombre articulo</h5>
                   <p class="card-text">descripcion articulo</p>
                   <div class="contenedorprecio">
-                    <img src="./assets/imagenes/carrito-de-compras.png" class="carrito" alt="">
+                    <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
+        
                     <p class="mt-3">$100.000</p>
                   </div>
                 </div>
@@ -237,7 +274,8 @@
                   <h5 class="card-title">Nombre articulo</h5>
                   <p class="card-text">descripcion articulo</p>
                   <div class="contenedorprecio">
-                    <img src="./assets/imagenes/carrito-de-compras.png" class="carrito" alt="">
+                    <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
+        
                     <p class="mt-3">$100.000</p>
                   </div>
                 </div>
@@ -248,7 +286,8 @@
                   <h5 class="card-title">Nombre articulo</h5>
                   <p class="card-text">descripcion articulo</p>
                   <div class="contenedorprecio">
-                    <img src="./assets/imagenes/carrito-de-compras.png" class="carrito" alt="">
+                    <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
+        
                     <p class="mt-3">$100.000</p>
                   </div>
                 </div>
@@ -259,7 +298,8 @@
                   <h5 class="card-title">Nombre articulo</h5>
                   <p class="card-text">descripcion articulo</p>
                   <div class="contenedorprecio">
-                    <img src="./assets/imagenes/carrito-de-compras.png" class="carrito" alt="">
+                    <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
+        
                     <p class="mt-3">$100.000</p>
                   </div>
                 </div>
@@ -267,7 +307,7 @@
                 
             </div>
             <nav aria-label="Page navigation" class="my-4">
-                <ul class="pagination justify-content-center">
+                <ul class="pagination justify-content-center ">
                     <li class="page-item disabled">
                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
@@ -307,24 +347,34 @@
   </div>
   <div class="servicios" id="servicios">
     <div>
-      <h2 class="font1 text-white">Conoce sobre nuestros serciocios </h2>
+      <h2 class="font1 ">Conoce sobre nuestros servicios </h2>
     </div>
-    <div class="cajaserv justify-content-center">
-      <img src="./assets/imagenes/ISAMfondonegro.png" class="imgsercivios" alt="">
-      <p class="font1 text-white ">BORDADOS</p>
-        <a class="cta text-center " href="./ISAM.html">
-          <span class="hover-underline-animation text-center"> DETALLES </span>
-          
-        </a>
-
-    </div>
-    <div class="cajaserv">
-
-      <img src="./assets/imagenes/WSMfondonegro.png" alt="imgsercivios" class="imgsercivios">
-      <p class="font1 text-white ">CONFECCIONES</p>
-      <a class="cta text-center" href="./WSM.html">
-        <span class="hover-underline-animation"> DETALLES </span>
-      </a>
+    <div class="row">
+      <div class="cajaserv">
+        <div class="col-6 text-center">
+          <img src="./assets/imagenes/ISAM.png" class="imgsercivios" alt="">
+          <p class="font1 mt-3 ">BORDADOS</p>
+          <a class="cta text-center " href="./ISAM.html">
+            <img src="./assets/imagenes/lupa.png" class="usuario" alt=""><span class="hover-underline-animation text-center"> DETALLES </span>
+          </a>
+        </div>
+        <div class="col-6">
+          <p class="m-5"> En ISAM estamos enfocados en bordados de alta calidad, desde grandes producciones hasta piezas personalizadas. Ofrecemos servicios para todo tipo de proyectos, incluidos bordados militares y empresariales. Conoce más detalle sobre nosotros.</p>
+        </div>
+      </div>
+      <div class="cajaserv mt-5">
+        <div class="col-6">
+          <p class="m-5 text-justify">WSM se especializa en la confección textil personalizada, adaptándonos a tus gustos y necesidades. Cada prenda o artículo que creamos es diseñado con dedicación y fabricado con los más altos estándares de calidad. Conoce más detalle sobre nosotros</p>
+        </div>
+        <div class="col-6 text-center">
+          <img src="./assets/imagenes/WSM.png" alt="imgsercivios" class="imgsercivios">
+          <p class="font1 mt-3 ">CONFECCIONES</p>
+          <a class="cta text-center" href="./WSM.html">
+            <img src="./assets/imagenes/lupa.png" class="usuario" alt=""><span class="hover-underline-animation"> DETALLES </span>
+          </a>
+        </div>
+        
+      </div>
     </div>
   </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
@@ -353,13 +403,13 @@
       <div class="row">
           <div class="col-lg-8 mb-4">
               <div class="embed-responsive j embed-responsive-16by9">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15906.047605453366!2d-74.07269445252314!3d4.680717624706632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sescuela%20militar%20de%20cadetes!5e0!3m2!1ses-419!2sco!4v1728487748668!5m2!1ses-419!2sco" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.244027011633!2d-74.03910265557249!3d4.684912400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b29bef2c90f%3A0xed35af4a852be4c6!2sGranados%20y%20Condecoraciones%20Cant%C3%B3n%20Norte!5e0!3m2!1ses-419!2sco!4v1728488085782!5m2!1ses-419!2sco" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15906.047605453366!2d-74.07269445252314!3d4.680717624706632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sescuela%20militar%20de%20cadetes!5e0!3m2!1ses-419!2sco!4v1728487748668!5m2!1ses-419!2sco" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" class="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.244027011633!2d-74.03910265557249!3d4.684912400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b29bef2c90f%3A0xed35af4a852be4c6!2sGranados%20y%20Condecoraciones%20Cant%C3%B3n%20Norte!5e0!3m2!1ses-419!2sco!4v1728488085782!5m2!1ses-419!2sco" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" class="" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
           </div>
           <div class="col-lg-4">
-              <h3 class="mb-3">Nuestras direcciones</h3>
-              <p>Escuela Militar de Cadetes<br>Bar de Cadetes<br>Local 19</p>
-              <p>Cantón Norte<br>Calle 106 # 7 a - 25<br>Local 202</p>
+              <h3 class="mb-3">NUESTRAS DIRECCIONES</h3>
+              <p class="fw-bold">Escuela Militar de Cadetes</p> <p>Bar de Cadetes<br>Local 19</p>
+              <p class="fw-bold">Cantón Norte</p> <p>Calle 106 # 7 a - 25<br>Local 202</p>
           </div>
       </div>
   </div>
@@ -388,12 +438,12 @@
 </section>
 
 <section id="service-section" class="py-5 customer-service-section">
-    <div class="container-fluid h-100">
+    <div class="container-fluid h-100 customer-service-sectio">
         <div class="row h-100 align-items-center">
-            <div class="col-md-6 text-white">
-                <h1 class="mb-4 font1">¿Necesitas ayuda?</h1>
-                <p class="lead mb-5">No dudes en contactarnos y con gusto te atenderemos</p>
-                <div class="d-flex flex-wrap gap-3">
+            <div class="col-md-9 text-white">
+                <h1 class="mb-4 font1 ">¿Necesitas ayuda?</h1>
+                <p class="lead ">No dudes en contactarnos y con gusto te atenderemos</p>
+                <div class="d-flex flex-wrap ">
                     <button class="btn btn-dark btn-lg">ESCRIBENOS</button>
                 </div>
             </div>
@@ -409,7 +459,7 @@
           <div class="col-md-3 mb-4 mb-md-0">
               <h5 class="mb-3">Contáctanos</h5>
               <ul class="list-unstyled">
-                  <li><i class="fas fa-map-marker-alt me-2"></i>Escuela Militar de Cadetes</li>
+                  <li><i class="fas fa-phone me-2"></i>+ 57 3118914319</li>
                   <li><i class="fas fa-phone me-2"></i>+ 57 3224325980</li>
               </ul>
           </div>

@@ -18,6 +18,7 @@ public class Pedido {
 
   private double total;
 
+
   // Constructor
   public Pedido() {}
 

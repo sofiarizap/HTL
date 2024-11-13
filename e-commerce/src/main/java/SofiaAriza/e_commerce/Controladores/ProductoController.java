@@ -29,8 +29,8 @@ public class ProductoController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Producto>> listarProductos() {
-    List<Producto> productos = productoService.listarProductos();
+  public ResponseEntity<List<Producto>> obtenerTodosLosProductos() { // Ajustado para coincidir con la interfaz
+    List<Producto> productos = productoService.obtenerTodosLosProductos();
     return ResponseEntity.ok(productos);
   }
 
@@ -46,4 +46,3 @@ public class ProductoController {
     return ResponseEntity.noContent().build();
   }
 }
-

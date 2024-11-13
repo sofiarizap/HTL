@@ -22,8 +22,7 @@ public class ProductoServiceImpl implements ProductoService {
 
   @Override
   public Producto obtenerProductoPorId(Long id) {
-    return productoRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado con id: " + id));
+    return productoRepository.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
   }
 
   @Override
@@ -32,8 +31,17 @@ public class ProductoServiceImpl implements ProductoService {
   }
 
   @Override
+  public Producto actualizarProducto(Long id, Producto producto) {
+    Producto productoExistente = obtenerProductoPorId(id);
+    productoExistente.setNombre(producto.getNombre());
+    productoExistente.setPrecio(producto.getPrecio());
+    productoExistente.setDescripcion(producto.getDescripcion());
+    // Actualiza otros campos necesarios
+    return productoRepository.save(productoExistente);
+  }
+
+  @Override
   public void eliminarProducto(Long id) {
     productoRepository.deleteById(id);
   }
 }
-

@@ -28,6 +28,32 @@ public class Pago {
 
   private String transaccionId; // ID de la transacción del proveedor de pago
 
-  // Getters y Setters
+  @ManyToOne
+  @JoinColumn(name = "cliente_id")
+  private Cliente cliente;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Double getMonto() {
+    return monto;
+  }
+
+  public void setMonto(Double monto) {
+    this.monto = monto;
+  }
+
+  public Pedido getPedido() {
+    return pedido;
+  }
+
+  public void setPedido(Pedido pedido) {
+    this.pedido = pedido;
+  }
 }
 

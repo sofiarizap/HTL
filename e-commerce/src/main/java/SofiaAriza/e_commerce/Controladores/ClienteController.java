@@ -10,16 +10,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/api")
 public class ClienteController {
 
   @Autowired
   private ClienteService clienteService;
 
-  @PostMapping
-  public ResponseEntity<Cliente> registrarCliente(@RequestBody Cliente cliente) {
-    Cliente nuevoCliente = clienteService.crearCliente(cliente);
-    return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCliente);
+  @PostMapping(path = "/clientes")
+  public ResponseEntity<Object> register(@RequestParam String nombre, @RequestParam String direccion,
+                                         @RequestParam String telefono, @RequestParam String ciudad ) {
+
+
+    if (nombre.isEmpty() ) {
+      return new ResponseEntity<>("ESPACIO DE NOMBRE VACIO", HttpStatus.FORBIDDEN);
+    }
+    if ( direccion.isEmpty()  ) {
+      return new ResponseEntity<>("ESPACIO DE DIRECCION VACIO", HttpStatus.FORBIDDEN);
+    }
+    if ( telefono.isEmpty() ) {
+      return new ResponseEntity<>("ESPACIO DE TELEFONO VACIO", HttpStatus.FORBIDDEN);
+    }
+    if ( ciudad.isEmpty() ) {
+      return new ResponseEntity<>("ESPACIO DE CIUDAD VACIO", HttpStatus.FORBIDDEN);
+    }
+
+
+
+
+
+
+
+    return new ResponseEntity<> ("SUCCESSFUL REGISTRATION",HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")

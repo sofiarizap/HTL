@@ -28,17 +28,14 @@ public class PedidoController {
     return ResponseEntity.ok(pedido);
   }
 
-  @GetMapping
-  public ResponseEntity<List<Pedido>> listarPedidos() {
-    List<Pedido> pedidos = pedidoService.listarPedidos();
+  // Ajuste para obtener pedidos por cliente
+  @GetMapping("/cliente/{clienteId}")
+  public ResponseEntity<List<Pedido>> obtenerPedidosPorCliente(@PathVariable Long clienteId) {
+    List<Pedido> pedidos = pedidoService.obtenerPedidosPorCliente(clienteId);
     return ResponseEntity.ok(pedidos);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<Pedido> actualizarPedido(@PathVariable Long id, @RequestBody Pedido pedido) {
-    Pedido pedidoActualizado = pedidoService.actualizarPedido(id, pedido);
-    return ResponseEntity.ok(pedidoActualizado);
-  }
+
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> eliminarPedido(@PathVariable Long id) {

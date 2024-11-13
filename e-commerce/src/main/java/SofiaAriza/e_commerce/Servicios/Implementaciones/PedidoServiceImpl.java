@@ -27,15 +27,12 @@ public class PedidoServiceImpl implements PedidoService {
 
   @Override
   public Pedido obtenerPedidoPorId(Long id) {
-    return pedidoRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Pedido no encontrado con id: " + id));
+    return pedidoRepository.findById(id).orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
   }
 
   @Override
   public List<Pedido> obtenerPedidosPorCliente(Long clienteId) {
-    Cliente cliente = clienteRepository.findById(clienteId)
-            .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con id: " + clienteId));
-    return pedidoRepository.findByCliente(cliente);
+    return pedidoRepository.findByClienteId(clienteId);
   }
 
   @Override

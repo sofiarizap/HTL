@@ -25,10 +25,9 @@ public class Cliente {
     // Constructor
     public Cliente() {}
 
-    public Cliente(String nombre, String email, Usuario usuario) {
+    public Cliente(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
-        this.usuario = usuario;
     }
 
     // Getters y Setters

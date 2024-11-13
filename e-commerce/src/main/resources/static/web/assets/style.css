@@ -115,7 +115,7 @@
 .servicios{
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
@@ -138,6 +138,14 @@
   background-position: center;
   height: 100%;
   position: relative;
+  
+  
+}
+.customer-service-sectio{
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: 100%;
 }
 
 .customer-service-section::before {
@@ -147,7 +155,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.668);
 }
 
 .customer-service-section .container-fluid {
@@ -183,10 +191,11 @@
 }
 
 .cta {
-  margin: 10px;
+  margin: 3px;
   border: none;
   background: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .cta span {
@@ -212,19 +221,21 @@
 
 .hover-underline-animation {
   position: relative;
-  color: rgb(255, 255, 255);
-  padding-bottom: 20px;
+  color: rgb(3, 3, 3);
+  text-decoration: none;
+  text-align: center;
+
 }
 
 .hover-underline-animation:after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 85%;
   transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: #000000;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -236,7 +247,10 @@
 
 .cajaserv{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .imgcarrusel{
   height: 500px;
@@ -436,7 +450,7 @@ footer {
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+  color: #000000;
 }
 
 .card {
@@ -454,13 +468,14 @@ footer {
 }
 
 .pagination .page-link {
-  color: #007bff;
+  color: #000000;
   transition: all 0.2s;
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #191818;
+  border-color: #343434;
+  color:white;
 }
 
 @media (max-width: 767.98px) {
@@ -486,7 +501,7 @@ footer {
 }
 
 .hero-section {
-  background-image:linear-gradient(to bottom, #0000005b 25%, #000000b5 100%), url(./imagenes/fondo.jpg)  ; 
+  background-image:linear-gradient(to bottom, #0000002d 25%, #0000000b 100%), url(./imagenes/fondo2.jpg)  ; 
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -502,10 +517,12 @@ footer {
   left: 0;
   background: rgba(0, 0, 0, 0.147);
 }
-
+.titulo-catalogo{
+  background-color: #dfdfdf;
+}
 .motto {
   font-size: 1.5rem;
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  color: #000;
 }
 
 .mission-vision .card {
@@ -531,7 +548,7 @@ footer {
 }
 
 .nav-link:hover {
-  color: #007bff;
+  color: #dfdfdf;
 }
 
 section {
@@ -569,4 +586,71 @@ section {
   .lead {
       font-size: 1rem;
   }
+}
+.category-btn {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.category-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover::before {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.category-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-text {
+  position: relative;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .category-btn {
+      height: 150px;
+  }
+  .category-text {
+      font-size: 1.2rem;
+  }
+}
+.custom-btn {
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #f0f0f0;
+}
+
+.custom-btn:active {
+  transform: scale(0.98);
 }
