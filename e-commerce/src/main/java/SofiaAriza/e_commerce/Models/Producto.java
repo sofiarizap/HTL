@@ -17,6 +17,7 @@ public class Producto {
     private String descripcion;
     private String imagenUrl;
     private String ubicacion;
+    private Categoria categoria;
 
     private boolean activo;
 
@@ -24,10 +25,11 @@ public class Producto {
     private List<ProductoPedido> productosPedidos;
 
     public Producto(){ }
-    public Producto(String nombre, double precio, int stock, String descripcion, String imagenUrl, String ubicacion) {
+    public Producto(String nombre, double precio, int stock, String descripcion, String imagenUrl, String ubicacion, Categoria categoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
+        this.categoria = categoria;
         this.descripcion = descripcion;
         this.imagenUrl = imagenUrl;
         this.activo = true;

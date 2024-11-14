@@ -30,10 +30,12 @@
         }
     </style>
 </head>
-<body>
+<body >
+    <div id="app">
     <div class="alerta fixed-top">
-        <p>ENVIOS A NIVEL NACIONAL</p>
+        <p>ENVIOS A NIVEL NACIONAL{{mensaje}}</p>
     </div>
+    
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg  fixed-top">
       <div class="container-fluid nav ">
@@ -104,7 +106,7 @@
                     <td class="text-light">2</td>
                     <td class="text-light">Nombre del producto</td>
                     <td class="text-light">precio</td>
-                    <td class="text-light">Categoria del producto</td>
+                    <td class="text-light">Categoria del producto {{mensaje}}</td>
                     <td class="text-light">descripción</td>
                     <td class="text-light">imagen PNG</td>
                     <td>
@@ -216,7 +218,267 @@
             </div>
         </div>
     </div>
+    <div class="d-flex justify-content-center align-items-center flex-column accordion-header">
+        <h3 class="font1-color">Productos</h3>
+        <input value="productos" @click="renderProductos()" type="checkbox" class="btn-check"
+            id="check-productos" autocomplete="off" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo" checked>
+        <label class="btn btn-primary" for="check-productos">Administrar Productos</label>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center flex-column accordion-header">
+        <h3 class="font1-color">Servicios</h3>
+        <input value="servicios" @click="renderServicios()" type="checkbox" class="btn-check"
+            id="check-lavado" autocomplete="off" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+            aria-expanded="true" aria-controls="collapseThree" checked>
+        <label class="btn btn-primary" for="check-lavado">Administrar Servicios</label>
+    </div>
+    {{mensaje}}
+</div>
+<div class="w-100 d-flex justify-content-center flex-wrap">
+    <!-- TABLAS -->
+    <div id="collapseOne" class="accordion-collapse collapse show w-100 mb-4"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body d-flex justify-content-center">
+            <div class="d-flex justify-content-between align-items-start tree-and-loan"
+                v-if="clientes.length">
+                <div class="container table-loan">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <div class="panel">
+                                <div class="panel-encabezado">
+                                    <div class="row d-flex justify-content-center p-3">
+                                        <div class="col col-sm-6 col-xs-12">
+                                            <h4 class="title">Clientes <span>activos</span></h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-12">
+                                            <div class="btn_group">
+                                                <!-- <button class="btn btn-default" data-bs-toggle="modal"
+                                                    data-bs-target="#modalNuevoCliente">Crear
+                                                    Cliente</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-sm-9 col-xs-12 text-end">
+                                    <div class="btn_group">
+                                        <button class="btn btn-default" title="Pdf"><i class="fa fa-file-pdf fa-lg"></i></button>
+                                    </div>
+                                </div> -->
+                                    </div>
+                                </div>
+                                <div class="panel-cuerpo table-responsive">
+                                    <table class="table" v-if="clientesVisibles && clientesVisibles.length">
+                                        <thead>
+                                            <tr class="titulo">
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Activo</th>
+                                                <th>Email</th>
+                                                <th>Modificar</th>
+                                                <th>Elminar/Activar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="cliente of clientesVisibles" class="renglon-info">
+                                                <td>{{cliente.id}}</td>
+                                                <td>{{cliente.nombre}}</td>
+                                                <td>{{cliente.apellido}}</td>
+                                                <td>{{cliente.activo? 'activo': 'inactivo'}}</td>
+                                                <td>{{cliente.email}}</td>
+                                                <td><i class="fa-sharp fa-solid fa-file-pen icono-modal"
+                                                        style="color: #000000;" data-bs-toggle="modal"
+                                                        data-bs-target="#modalCliente"
+                                                        @click="clienteModif = cliente"></i></td>
+                                                <td>
+                                                    <i v-if="cliente.activo" class="fa-solid fa-trash-can icono-modal"
+                                                        style="color: #000000;"
+                                                        @click="borrarCliente(cliente)"></i>
+                                                    <i v-else class="fa-solid fa-plus" style="color: #000000;"  @click="activarCliente(cliente)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div v-else class="d-flex align-items-center">
+                                        <h2 class="w-75">Actualmente no hay clientes para mostrar.</h2>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-6 col-sm-6 col-xs-6 float-start">
+                                            <span class="float-start">mostrando {{paginaNumeroCli}} de
+                                                {{totalPaginasCli}} páginas</span>
+                                        </div>
+                                        <div class="col-6 col-sm-6 col-xs-6 float-end">
+                                            <div class="flex-column align-items-end flexDesde768">
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center page-transactions">
+                                                    <i v-if="paginaNumeroCli > 1"
+                                                        @click="cambiarPaginaCli(-1)"
+                                                        class="fa-solid fa-chevron-left fa-white me-2 chevron-page-transaction"></i>
+                                                    <i v-else
+                                                        class="fa-solid fa-chevron-left fa-grey me-2"></i>
+                                                    <ul class="pagination">
+                                                        <template v-for="numero of numPaginasVisibleCli">
+                                                            <li :class="paginaNumeroCli == numero? 'active': 'disabled'"
+                                                                @click="irAPaginaCli(numero)"><a
+                                                                    href="#collapseOne">{{numero}}</a></li>
+                                                        </template>
+                                                    </ul>
+                                                    <i v-if="totalPaginasCli > paginaNumeroCli"
+                                                        @click="cambiarPaginaCli(1)"
+                                                        class="fa-solid fa-chevron-right fa-white ms-2 chevron-page-transaction"></i>
+                                                    <i v-else
+                                                        class="fa-solid fa-chevron-right fa-grey ms-2"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="align-items-end justify-content-end flexHasta768">
+                                                <i v-if="paginaNumeroCli > 1" @click="cambiarPaginaCli(-1)"
+                                                    class="fa-solid fa-chevron-left fa-white me-2 chevron-page-transaction"></i>
+                                                <i v-else class="fa-solid fa-chevron-left fa-grey me-2"></i>
+
+                                                <i v-if="totalPaginasCli > paginaNumeroCli"
+                                                    @click="cambiarPaginaCli(1)"
+                                                    class="fa-solid fa-chevron-right fa-white ms-2 chevron-page-transaction"></i>
+                                                <i v-else
+                                                    class="fa-solid fa-chevron-right fa-grey ms-2"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapseTwo" class="accordion-collapse collapse w-100 show mb-4"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body d-flex justify-content-center">
+            <div class="d-flex justify-content-between align-items-start tree-and-loan"
+                v-if="productos.length"><!-- v-if="clientes.length" -->
+                <div class="container table-loan">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <div class="panel">
+                                <div class="panel-encabezado">
+                                    <div class="row d-flex justify-content-center p-3">
+                                        <div class="col col-sm-6 col-xs-12">
+                                            <h4 class="title">Productos <span>activos</span></h4>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-12">
+                                            <div class="btn_group">
+                                                <button class="btn btn-default" data-bs-toggle="modal"
+                                                    data-bs-target="#modalNuevoProducto">Crear
+                                                    Producto</button>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-sm-9 col-xs-12 text-end">
+                                    <div class="btn_group">
+                                        <button class="btn btn-default" title="Pdf"><i class="fa fa-file-pdf fa-lg"></i></button>
+                                    </div>
+                                </div> -->
+                                    </div>
+                                </div>
+                                <div class="panel-cuerpo table-responsive">
+                                    <table class="table"
+                                        v-if="productosVisibles && productosVisibles.length">
+                                        <thead>
+                                            <tr class="titulo">
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Activo</th>
+                                                <th>Precio</th>
+                                                <th>Stock</th>
+                                                <th>Modificar</th>
+                                                <th>Elminar/Activar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="producto of productosVisibles" class="renglon-info">
+                                                <td>{{producto.id}}</td>
+                                                <td>{{producto.nombre}}</td>
+                                                <td>{{producto.activo? 'activo': 'inactivo'}}</td>
+                                                <td>{{producto.precio}}</td>
+                                                <td>{{producto.stock}}</td>
+                                                <td><i class="fa-sharp fa-solid fa-file-pen icono-modal"
+                                                        style="color: #000000;" data-bs-toggle="modal"
+                                                        data-bs-target="#modalProducto"
+                                                        @click="productoModif = producto"></i></td>
+                                                <td>
+                                                    <i v-if="producto.activo" class="fa-solid fa-trash-can icono-modal"
+                                                        style="color: #000000;"
+                                                        @click="borrarProducto(producto)">
+                                                    </i>
+                                                    <i v-else class="fa-solid fa-plus" style="color: #000000;"  @click="activarProducto(producto)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div v-else class="d-flex align-items-center">
+                                        <h2 class="w-75">Actualmente no hay productos para mostrar.</h2>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-6 col-sm-6 col-xs-6 float-start">
+                                            <span class="float-start">mostrando {{paginaNumeroPro}} de
+                                                {{totalPaginasPro}} páginas</span>
+                                        </div>
+                                        <div class="col-6 col-sm-6 col-xs-6 float-end">
+                                            <div class="flex-column align-items-end flexDesde768">
+                                                <div
+                                                    class="d-flex justify-content-end align-items-center page-transactions">
+                                                    <i v-if="paginaNumeroPro > 1"
+                                                        @click="cambiarPaginaPro(-1)"
+                                                        class="fa-solid fa-chevron-left fa-white me-2 chevron-page-transaction"></i>
+                                                    <i v-else
+                                                        class="fa-solid fa-chevron-left fa-grey me-2"></i>
+                                                    <ul class="pagination">
+                                                        <template v-for="numero of numPaginasVisiblePro">
+                                                            <li :class="paginaNumeroPro == numero? 'active': 'disabled'"
+                                                                @click="irAPaginaPro(numero)"><a
+                                                                    href="#collapseTwo">{{numero}}</a></li>
+                                                        </template>
+                                                    </ul>
+                                                    <i v-if="totalPaginasPro > paginaNumeroPro"
+                                                        @click="cambiarPaginaPro(1)"
+                                                        class="fa-solid fa-chevron-right fa-white ms-2 chevron-page-transaction"></i>
+                                                    <i v-else
+                                                        class="fa-solid fa-chevron-right fa-grey ms-2"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="align-items-end justify-content-end flexHasta768">
+                                                <i v-if="paginaNumeroPro > 1" @click="cambiarPaginaPro(-1)"
+                                                    class="fa-solid fa-chevron-left fa-white me-2 chevron-page-transaction"></i>
+                                                <i v-else class="fa-solid fa-chevron-left fa-grey me-2"></i>
+
+                                                <i v-if="totalPaginasPro > paginaNumeroPro"
+                                                    @click="cambiarPaginaPro(1)"
+                                                    class="fa-solid fa-chevron-right fa-white ms-2 chevron-page-transaction"></i>
+                                                <i v-else
+                                                    class="fa-solid fa-chevron-right fa-grey ms-2"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/JS/administrador.js"></script>
 </body>
 </html>

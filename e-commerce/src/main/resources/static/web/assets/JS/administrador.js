@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp({
     data(){
         return{
+            mensaje:`hola`,
             cliente: undefined,
             clientes: [],
             productos: [],

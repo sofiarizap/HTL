@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+  <div id="app">
   <header class="hero-section">
   <div class="container h-100">
       <div class="row h-100 align-items-end">
@@ -169,6 +170,7 @@
       </div>
     </div>
   </nav>
+  
   <div class="container-fluid">
     <div class="container py-5">
       <h1 class="text-center mb-5 font1">NUESTROS ARTICULOS</h1>
@@ -177,6 +179,7 @@
               <button class="category-btn" style="background-image: url('https://img.freepik.com/free-photo/person-with-gothic-style-costume-performing-drama-world-theatre-day_23-2151182208.jpg?t=st=1729128683~exp=1729132283~hmac=1cda75eaeee5a158f50ebc7ffccfdaf3f1815c71ad8fecb628a967cd6dd9aad1&w=740');" aria-label="Shop Boots">
                   <span class="category-text">Botas</span>
               </button>
+              
           </div>
           <div class="col-md-4 col-sm-6">
               <button class="category-btn" style="background-image: url('https://lh4.googleusercontent.com/proxy/Gpj4HYIGu5-HQxtUnhslu3XEsMMvB_xG5uNtuAxSShBuvF3RWq5R2hcMqa6dI2MqnqBgdBuN0aM9sofAEuGaTpDESF7fPMkoTwuEj5EJJvhM0DZRI2EmrklWO9w-TZ2LJ0Kha_gw57lxM6wR6ZQ');" aria-label="Shop Tactical Gear">
@@ -202,7 +205,7 @@
   </div>
     <div class="row">
       <div class="d-flex justify-content-center flex-wrap flex-md-nowrap titulo-catalogo align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-center font1">CATÁLOGO</h1>
+        <h1 class="h2 text-center font1">CATÁLOGO </h1>
     </div>
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky pt-3">
@@ -210,6 +213,15 @@
                     <input type="search" class="form-control" placeholder="Buscar artículos..." aria-label="Search">
                 </div>
                 <ul class="nav flex-column">
+                  <div class="check m-3" id="checkCategory">
+
+                    <template v-if="categorias" v-for="categoria of categorias">
+                      <input v-model="checked" @change="busquedaCruzada" type="checkbox" class="btn-check" :id="categoria"
+                        :value="categoria" autocomplete="off" checked>
+                      <label class="btn btn-primary ms-3 me-2" :for="categoria">{{categoria}}</label>
+                    </template>
+        
+                  </div>
                     <li class="nav-item">
                         <a class="nav-link active" href="#" aria-current="page">Ropa</a>
                     </li>
@@ -499,6 +511,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./assets/JS/index.js"></script>
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
