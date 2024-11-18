@@ -86,9 +86,27 @@
             </thead>
             <tbody class="text-light">
                 <!-- Example row -->
+                <form @submit.prevent="agregarProducto">
+                    <input type="text" v-model="producto.nombre" placeholder="Nombre del producto" />
+                    <input type="number" v-model="producto.precio" placeholder="Precio" />
+                    <select v-model="producto.categoria">
+                        <option>ROPA</option>
+                        <option>ACCESORIOS</option>
+                        <option>CALZADO</option>
+                    </select>
+                    <input type="file" @change="cargarImagen" />
+                    <button type="submit">Agregar Producto</button>
+                </form>
+                <div v-for="producto in productos" :key="producto.id">
+                    <img :src="producto.imagenUrl" alt="Imagen del producto" />
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.precio }}</p>
+                    <button @click="editarProducto(producto)">Editar</button>
+                    <button @click="eliminarProducto(producto.id)">Eliminar</button>
+                </div>
                 <tr class="text-light">
                     <td class="text-light">1</td>
-                    <td class="text-light">Nombre del producto</td>
+                    <td input type="text" v-model="producto.nombre" placeholder="Nombre del producto">Nombre del producto</td>
                     <td class="text-light">precio</td>
                     <td class="text-light">Categoria del producto</td>
                     <td class="text-light">descripción</td>
