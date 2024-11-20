@@ -30,7 +30,7 @@ public class ProductoController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Producto>> obtenerTodosLosProductos() { // Ajustado para coincidir con la interfaz
+  public ResponseEntity<List<Producto>> obtenerTodosLosProductos() {
     List<Producto> productos = productoService.obtenerTodosLosProductos();
     return ResponseEntity.ok(productos);
   }

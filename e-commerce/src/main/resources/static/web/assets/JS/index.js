@@ -15,7 +15,7 @@ createApp({
         }
     },
     created(){
-    this.url = "/api/productos";
+    this.url = "/productos";
     this.loadData() 
 
     
@@ -29,8 +29,19 @@ createApp({
               this.productosFiltrados = res.data.map(producto => ({ ...producto }));
               this.categorias = [... new Set(this.productos.map(producto => producto.categoria))];
               console.log(this.productos)
+              console.log(this.productos.map(producto => producto.categoria))
             })
             .catch((error)=>{console.log(error)})
+        },
+        
+        busquedaCruzada: function () {
+            let filtroInput = this.productos.filter(producto => producto.nombre.toLowerCase().includes(this.inputBusqueda.toLowerCase()))
+            if (this.checked.length === 0) {
+                this.productosFiltrados = filtroInput
+            } else {
+                let filtroCheck = filtroInput.filter(categoria => this.checked.includes(categoria.categoria))
+                this.productosFiltrados = filtroCheck
+            }
         },
     
         async cargarImagen(event) {

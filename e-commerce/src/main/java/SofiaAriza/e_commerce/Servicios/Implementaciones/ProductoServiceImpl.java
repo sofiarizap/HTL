@@ -36,7 +36,12 @@ public class ProductoServiceImpl implements ProductoService {
     productoExistente.setNombre(producto.getNombre());
     productoExistente.setPrecio(producto.getPrecio());
     productoExistente.setDescripcion(producto.getDescripcion());
-    // Actualiza otros campos necesarios
+    productoExistente.setOferta(producto.getOferta());
+    productoExistente.setActivo(producto.getActivo());
+    productoExistente.setImagenUrl(producto.getImagenUrl());
+    productoExistente.setStock(producto.getStock());
+    productoExistente.setUbicacion(producto.getUbicacion());
+    productoExistente.setProductosPedidos(producto.getProductosPedidos());
     return productoRepository.save(productoExistente);
   }
 
