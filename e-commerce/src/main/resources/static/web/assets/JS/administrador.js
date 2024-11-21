@@ -3,35 +3,25 @@ const {createApp} = Vue;
 createApp({
     data(){
         return{
-            mensaje:`hola`,
             cliente: undefined,
             clientes: [],
             productos: [],
-            servicios: [],
             clientesVisibles: [],
             productosVisibles: [],
-            serviciosVisibles: [],
             totalPaginasCli: 1,
             totalPaginasPro: 1,
-            totalPaginasSer: 1,
             paginaNumeroCli: 1,
             paginaNumeroPro: 1,
-            paginaNumeroSer: 1,
             numPaginasArrayCli: [],
             numPaginasArrayPro: [],
-            numPaginasArraySer: [],
             numPaginasVisibleCli: [],
             numPaginasVisiblePro: [],
-            numPaginasVisibleSer: [],
             moduloPaginadoActualCli: 0,
             moduloPaginadoActualPro: 0,
-            moduloPaginadoActualSer: 0,
             clienteModif: undefined,
             productoModif: undefined,
-            servicioModif: undefined,
             clienteFinal: undefined,
             productoFinal: undefined,
-            servicioFinal: undefined,
             clienteNuevo: {
                 nombre: "",
                 apellido: "",
@@ -47,13 +37,7 @@ createApp({
                 imagenUrl: "",
                 categoria: "",
             },
-            servicioNuevo: {
-                nombre: "",
-                descripcion: "",
-                precio: undefined,
-                duracion: "",
-                imagenURL: "",
-            },
+            
             sinError: true,
         }
     },
@@ -66,16 +50,14 @@ createApp({
 
         cargarDatos: function(){
 
-            let clientes = axios.get('/api/clientes');
-            let productos = axios.get('/api/productos');
-            let servicios = axios.get('/api/servicios');
+            let clientes = axios.get('/clientes');
+            let productos = axios.get('/productos');
 
-            Promise.all([clientes, productos, servicios])
+            Promise.all([clientes, productos])
                     .then(respuesta => {
                         console.log(respuesta);
                         this.clientes = respuesta[0].data.map(cliente => ({...cliente})).sort((c1, c2) => c1.id - c2.id);
                         this.productos = respuesta[1].data.map(producto => ({... producto})).sort((p1, p2) => p1.id - p2.id);
-                        this.servicios = respuesta[2].data.map(servicio => ({... servicio})).sort((s1, s2)=> s1.id - s2.id);
 
                         this.administrarDatos();
                     })
@@ -85,7 +67,6 @@ createApp({
         administrarDatos: function(){
             this.renderClientes();
             this.renderProductos();
-            this.renderServicios();
         },
 
 
@@ -137,51 +118,7 @@ createApp({
             }        
         },
 
-        crearServicio(){
-            this.sinError = true;
-            if(!this.servicioNuevo.nombre || !this.servicioNuevo.descripcion || !this.servicioNuevo.precio || !this.servicioNuevo.duracion || !this.clienteNuevo.imagenURL){
-                this.sinError = false;
-            }
-            else {
-
-                Swal.fire({
-                    customClass: 'modal-sweet-alert',
-                    title: 'Por favor confirme la creación del servicio',
-                    text: "Si acepta se procederá a la creación del servicio. Si quiere anular la petición, solo haga clic en el boton 'Cerrar'.",
-                    icon: 'warning',
-                    showCancelButton: true, 
-                    confirmButtonColor: '#f7ba24',         
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cerrar',
-                    confirmButtonText: 'Aceptar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        axios.post('/api/crear-servicio',{nombre: this.servicioNuevo.nombre, descripcion: this.servicioNuevo.descripcion, precio: this.servicioNuevo.duracion, imagenURL: this.servicioNuevo.imagenURL})
-                        .then(response => {
-                            
-                            Swal.fire({
-                                customClass: 'modal-sweet-alert',
-                                text: "Servicio creado!",
-                                icon: 'success',
-                                confirmButtonText: 'Aceptar'
-                            }).then((result) => {
-                                location.reload(); 
-                            })
-                        })
-                        .catch(err =>{
-                           console.log([err])
-               
-                           Swal.fire({
-                               customClass: 'modal-sweet-alert',
-                               icon: 'error',
-                               title: 'Ups...',
-                               text: err.message.includes('403')? err.response.data: "Hubo un error inesperado",
-                           })
-                        })
-                    }
-                  })
-            }        
-        },
+        
 
         modifCliente(){
 
@@ -283,54 +220,7 @@ createApp({
             }
         },
 
-        modifServicio(){
-            this.servicioFinal = undefined;
-            this.sinError = true;
-            console.log(this.servicioModif);
-            if(!this.servicioModif.descripcion || !this.servicioModif.duracion || !this.servicioModif.imagenURL || !this.servicioModif.nombre || !this.servicioModif.precio){
-                this.sinError = false;
-            }
-            else {
-                this.servicioFinal = {... this.servicioModif};
-
-                Swal.fire({
-                    customClass: 'modal-sweet-alert',
-                    title: 'Por favor confirme la modificacion del servicio',
-                    text: "Si acepta se procederá a la modificación del servicio. Si quiere anular la petición, solo haga clic en el boton 'Cerrar'.",
-                    icon: 'warning',
-                    showCancelButton: true,          
-                    cancelButtonColor: '#d33',
-                    confirmButtonColor: '#f7ba24',
-                    cancelButtonText: 'Cerrar',
-                    confirmButtonText: 'Aceptar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        axios.patch('/api/modificar-servicio',{id: this.servicioFinal.id, nombre: this.servicioFinal.nombre, precio: this.servicioFinal.precio, descripcion: this.servicioFinal.descripcion, duracion: this.servicioFinal.duracion, imagenURL: this.servicioFinal.imagenURL})
-                        .then(response => {
-                            
-                            Swal.fire({
-                                customClass: 'modal-sweet-alert',
-                                text: "Servicio modificado!",
-                                icon: 'success',
-                                confirmButtonText: 'Aceptar'
-                            }).then((result) => {
-                                location.reload(); 
-                            })
-                        })
-                        .catch(err =>{
-                           console.log([err])
-               
-                           Swal.fire({
-                               customClass: 'modal-sweet-alert',
-                               icon: 'error',
-                               title: 'Ups...',
-                               text: err.message.includes('403')? err.response.data: "Hubo un error inesperado",
-                           })
-                        })
-                    }
-                  }) 
-            }
-        },
+        
 
         borrarCliente(cliente){
             Swal.fire({
@@ -410,44 +300,7 @@ createApp({
               })
         },
 
-        borrarServicio(servicio){
-            Swal.fire({
-                customClass: 'modal-sweet-alert',
-                title: 'Por favor confirmar la cancelación del servicio',
-                text: `Si acepta, el servicio ${servicio.nombre} será cancelado. El servicio no podrá ser accedido en futuras transacciones. Si desea cancelar la petición, solo haga clic en el boton 'Cerrar'.`,
-                icon: 'warning',
-                showCancelButton: true,          
-                cancelButtonColor: '#d33',
-                confirmButtonColor: '#f7ba24',
-                cancelButtonText: 'Cerrar',
-                confirmButtonText: 'Aceptar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    servicio.activo = false;
-                    axios.patch('/api/deshabilitar-servicio',`id=${servicio.id}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
-                    .then(response => {
-                        Swal.fire({
-                            customClass: 'modal-sweet-alert',
-                            text: "Servicio cancelado",
-                            icon: 'success',
-                            confirmButtonText: 'Aceptar'
-                        }).then((result) => {
-                            location.reload(); 
-                        })
-                    })
-                    .catch(err =>{
-                       console.log([err])
-           
-                       Swal.fire({
-                           customClass: 'modal-sweet-alert',
-                           icon: 'error',
-                           title: 'Ups...',
-                           text: err.message.includes('403')? err.response.data: "Ha surgido un error imprevisto.",
-                       })
-                    })
-                }
-              })
-        },
+        
 
         activarCliente(cliente){
             Swal.fire({
@@ -527,44 +380,7 @@ createApp({
               })
         },
 
-        activarServicio:function(servicio){
-            Swal.fire({
-                customClass: 'modal-sweet-alert',
-                title: 'Por favor confirmar la activación del servicio',
-                text: `Si acepta, el servicio ${servicio.nombre} será activado. El servicio volverá a ser accedido en futuras transacciones. Si desea cancelar la petición, solo haga clic en el boton 'Cerrar'.`,
-                icon: 'warning',
-                showCancelButton: true,          
-                cancelButtonColor: '#d33',
-                confirmButtonColor: '#f7ba24',
-                cancelButtonText: 'Cerrar',
-                confirmButtonText: 'Aceptar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    servicio.activo = true;
-                    axios.patch('/api/modificar-servicio',{id: servicio.id, nombre: servicio.nombre, precio: servicio.precio, descripcion: servicio.descripcion, duracion: servicio.duracion, imagenURL: servicio.imagenURL, activo: servicio.activo})
-                    .then(response => {
-                        Swal.fire({
-                            customClass: 'modal-sweet-alert',
-                            text: "Servicio activado",
-                            icon: 'success',
-                            confirmButtonText: 'Aceptar'
-                        }).then((result) => {
-                            location.reload(); 
-                        })
-                    })
-                    .catch(err =>{
-                       console.log([err])
-           
-                       Swal.fire({
-                           customClass: 'modal-sweet-alert',
-                           icon: 'error',
-                           title: 'Ups...',
-                           text: err.message.includes('403')? err.response.data: "Ha surgido un error imprevisto.",
-                       })
-                    })
-                }
-              })
-        },
+        
 
         renderClientes: function(){
 
@@ -652,47 +468,7 @@ createApp({
         },
 
 
-        renderServicios: function(){
-
-            let tamanio = this.servicios.length;
-            let contador = 0;
-            let renglonesElementos = [];
-
-            while(contador < tamanio){
-                renglonesElementos.push(this.servicios.slice(contador, contador+=10));
-            }
-
-            this.totalPaginasSer = renglonesElementos.length;
-            if(this.totalPaginasSer === 1){
-                this.paginaNumeroSer = 1;
-            }
-            this.serviciosVisibles = renglonesElementos[this.paginaNumeroSer - 1];
-            if(!this.serviciosVisibles){
-                this.serviciosVisibles = [];
-            }
-            let numeros = [];
-            for(let i = 1; i <= this.totalPaginasSer; i++){
-                numeros.push(i);
-            }
-            contador = 0;
-            this.numPaginasArraySer = [];
-            while(contador < this.totalPaginasSer){
-                this.numPaginasArraySer.push( numeros.slice(contador, contador+=3) );
-            }
-            this.numPaginasVisibleSer = this.numPaginasArraySer[this.moduloPaginadoActualSer];
-        },
-
-        cambiarPaginaSer: function(movimientos){
-            this.paginaNumeroSer += movimientos;
-            this.moduloPaginadoActualSer = Math.floor((this.paginaNumeroSer - 1) / 3);
-            console.log(this.moduloPaginadoActualSer);
-            this.renderServicios();
-        },
-
-        irAPaginaSer: function(page){
-            this.paginaNumeroSer = page;
-            this.renderServicios();
-        },
+        
     }
 
 }).mount("#app")
