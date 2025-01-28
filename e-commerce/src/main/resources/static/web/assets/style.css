@@ -520,6 +520,13 @@ footer {
 .titulo-catalogo{
   background-color: #dfdfdf;
 }
+.catalogo{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+
 .motto {
   font-size: 1.5rem;
   color: #000;
