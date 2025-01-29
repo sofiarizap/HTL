@@ -1,6 +1,115 @@
-const {createApp} = Vue;
+const { createApp } = Vue;
 
 createApp({
+    data() {
+        return {
+            productos: [],
+            url: "/productos", 
+            editando: false,
+            nuevoProducto: {
+                nombre: "",
+                precio: 0,
+                stock: 0,
+                descripcion: "",
+                imagenUrl: "",
+                ubicacion: "",
+                categoria: "ropa",
+                activo: true,
+                oferta: false
+            }
+        };
+    },
+    created() {
+        this.cargarDatos();
+    },
+    methods: {
+        async cargarDatos() {
+            try {
+                const response = await axios.get(this.url);
+                this.productos = response.data;
+            } catch (error) {
+                console.error("Error cargando productos:", error);
+                alert("Hubo un problema al cargar los productos.");
+            }
+        },
+        async agregarProducto() {
+            if (!this.validarProducto(this.nuevoProducto)) return;
+            
+            try {
+                if (this.editando) {
+                    await axios.put(`${this.url}/${this.nuevoProducto.id}`, this.nuevoProducto);
+                } else {
+                    await axios.post(this.url, this.nuevoProducto);
+                }
+                this.cargarDatos();
+                this.limpiarFormulario();
+            } catch (error) {
+                console.error("Error guardando producto:", error);
+                alert("No se pudo guardar el producto.");
+            }
+        },
+        editarProducto(producto) {
+            this.nuevoProducto = { ...producto };
+            this.editando = true;
+        },
+        async eliminarProducto(id) {
+            if (confirm("¿Seguro que quieres eliminar este producto?")) {
+                try {
+                    await axios.delete(`${this.url}/${id}`);
+                    this.cargarDatos();
+                } catch (error) {
+                    console.error("Error eliminando producto:", error);
+                    alert("No se pudo eliminar el producto.");
+                }
+            }
+        },
+        limpiarFormulario() {
+            this.nuevoProducto = {
+                nombre: "",
+                precio: 0,
+                stock: 0,
+                descripcion: "",
+                imagenUrl: "",
+                ubicacion: "",
+                categoria: "",
+                activo: true,
+                oferta: false
+            };
+            this.editando = false;
+        },
+        validarProducto(producto) {
+            if (!producto.nombre.trim()) {
+                alert("El nombre es obligatorio.");
+                return false;
+            }
+            if (producto.precio <= 0 || isNaN(producto.precio)) {
+                alert("El precio debe ser un número positivo.");
+                return false;
+            }
+            if (producto.stock < 0 || isNaN(producto.stock)) {
+                alert("El stock no puede ser negativo.");
+                return false;
+            }
+            if (!producto.descripcion.trim()) {
+                alert("La descripción es obligatoria.");
+                return false;
+            }
+            if (!producto.imagenUrl.trim()) {
+                alert("La URL de la imagen es obligatoria.");
+                return false;
+            }
+            if (!producto.ubicacion.trim()) {
+                alert("La ubicación es obligatoria.");
+                return false;
+            }
+            return true;
+        }
+    }
+}).mount("#app");
+
+
+  
+/*createApp({
     data(){
         return{
             cliente: undefined,
@@ -471,4 +580,4 @@ createApp({
         
     }
 
-}).mount("#app")
+}).mount("#app")*/
