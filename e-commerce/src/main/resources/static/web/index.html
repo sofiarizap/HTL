@@ -181,7 +181,7 @@
               
           </div>
           <div class="col-md-4 col-sm-6">
-              <button class="category-btn" style="background-image: url('https://lh4.googleusercontent.com/proxy/Gpj4HYIGu5-HQxtUnhslu3XEsMMvB_xG5uNtuAxSShBuvF3RWq5R2hcMqa6dI2MqnqBgdBuN0aM9sofAEuGaTpDESF7fPMkoTwuEj5EJJvhM0DZRI2EmrklWO9w-TZ2LJ0Kha_gw57lxM6wR6ZQ');" aria-label="Shop Tactical Gear">
+              <button class="category-btn"  v-model="checked" @change="busquedaCruzada" :value="BOTAS" style="background-image: url('https://lh4.googleusercontent.com/proxy/Gpj4HYIGu5-HQxtUnhslu3XEsMMvB_xG5uNtuAxSShBuvF3RWq5R2hcMqa6dI2MqnqBgdBuN0aM9sofAEuGaTpDESF7fPMkoTwuEj5EJJvhM0DZRI2EmrklWO9w-TZ2LJ0Kha_gw57lxM6wR6ZQ');" aria-label="Shop Tactical Gear">
                   <span class="category-text">Elementos Tácticos</span>
               </button>
           </div>
@@ -209,42 +209,51 @@
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky pt-3">
                 <div class="mb-4">
-                    <input type="search" class="form-control" placeholder="Buscar artículos..." aria-label="Search">
-                </div>
-                <ul class="nav flex-column">
+                  <form class="d-flex justify-content-around align-items-center" role="search">
+                    <input class="form-control " type="search" v-model="inputBusqueda" @input="busquedaCruzada"
+                      placeholder="Buscar" aria-label="Search">
+                    
+                  </form></div>
+                <ul class="nav ">
                   <div class="check m-3" id="checkCategory">
                     
                     <template  v-for="categoria of categorias">
-                      <input v-model="checked" @change="busquedaCruzada" type="checkbox" class="btn-check" :id="categoria"
-                        :value="categoria" autocomplete="off" checked>
-                      <label class="btn btn-primary ms-3 me-2" :for="categoria">{{categoria}}</label>
+                      
+                      <input  v-model="checked" @change="busquedaCruzada" :value="categoria"  :id="categoria" autocomplete="off" 
+                      checked type="checkbox" class="buttoncatego" data-text="Awesome">
+                        <span class="actual-text">&nbsp;{{categoria}} &nbsp;</span>
+                         <br>
+                    </input>
                     </template>
         
                   </div>
                 </ul>
             </div>
         </nav>
-        <main class=" catalogo col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            
-            
-          
-          <div  v-for="producto of productosFiltrados" class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <div class="card cardproducto" style="width: 15rem;">
-              <img src="./assets/imagenes/articulo.jpg" class="card-img-top articulofoto" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{producto.nombre.toUpperCase()}}</h5>
-                <p class="card-text">{{producto.descripcion}}</p>
-                <div class="contenedorprecio">
-                  <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
-      
-                  <p class="mt-3">{{producto.precio}}</p>
-                  <div class="card.botton d-flex justify-content-around">
-                    <a :href="'./details.html?id=' + producto.id" class="btn btn-dark "> Ver más</a>
+        <main class="row catalogo justify-content-center col-md-9">
+          <!-- Agregar una fila con cards distribuidas en columnas -->
+          <div class="row justify-content-center">
+            <div v-for="producto in productosFiltrados" :key="producto.id" class="col-md-4 col-sm-6 col-12 d-flex justify-content-center">
+              <div class="card cardproducto" style="width: 15rem;">
+                <img src="./assets/imagenes/articulo.jpg" class="card-img-top articulofoto" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ producto.nombre.toUpperCase() }}</h5>
+                  <p class="card-text">{{ producto.descripcion }}</p>
+                  <div class="contenedorprecio">
+                    <a class="navbar-brand" href="./carrito.html">
+                      <img src="./assets/imagenes/carrito-de-compras.png" alt="carrito" class="carrito">
+                    </a>
+                    <p class="mt-3">{{ producto.precio }}</p>
+                    <div class="d-flex justify-content-around">
+                      <a :href="'./details.html?id=' + producto.id" class="btn btn-dark">Ver más</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
+          </div>
+        </main>
+        
             
                 
             </div>
