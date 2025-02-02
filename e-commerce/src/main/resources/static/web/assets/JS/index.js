@@ -28,8 +28,6 @@ createApp({
               this.productosActivos= this.productos.filter(producto => producto.Activo == true)
               this.productosFiltrados = res.data.map(producto => ({ ...producto }));
               this.categorias = [... new Set(this.productos.map(producto => producto.categoria))];
-              console.log(this.productos)
-              console.log(this.productos.map(producto => producto.categoria))
             })
             .catch((error)=>{console.log(error)})
         },
@@ -43,6 +41,7 @@ createApp({
                 this.productosFiltrados = filtroCheck
             }
         },
+        
     
         async cargarImagen(event) {
             const archivo = event.target.files[0];
