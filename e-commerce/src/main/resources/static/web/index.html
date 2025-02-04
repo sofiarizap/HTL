@@ -20,8 +20,8 @@
   <header class="hero-section">
   <div class="container h-100">
       <div class="row h-100 align-items-end">
-          <div class="col-12 text-start mb-5 ">
-              <a class="nav-link motto font1 text-white" type="button" href="#conocenos"><h1 class=" font1 fw-bold">CONOCENOS</h1></a>
+          <div id="inicio" class="col-12 text-start mb-5 ">
+              <a class="nav-link motto font1 text-white" ><h1 class=" font1 fw-bold">CONOCENOS</h1></a>
           </div>
       </div>
   </div>
@@ -155,13 +155,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#catalogo">Catálogo</a>
+            <a class="nav-link" href="./ISAM.html">ISAM Bordados</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#servicios">ISAM Bordados</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#sedes">PROESTATAL</a>
+            <a class="nav-link" href="./proestatal.html">PROESTATAL</a>
           </li>
         </ul>
         <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
@@ -213,7 +210,7 @@
       </div>
   </div>
     <div class="row">
-      <div class="d-flex justify-content-center flex-wrap flex-md-nowrap titulo-catalogo align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div id="catalogo" class="d-flex justify-content-center flex-wrap flex-md-nowrap titulo-catalogo align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 text-center font1">CATÁLOGO </h1>
     </div>
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -325,12 +322,12 @@
       </div>
       <div class="cajaserv mt-5">
         <div class="col-6">
-          <p class="m-5 text-justify">WSM se especializa en la confección textil personalizada, adaptándonos a tus gustos y necesidades. Cada prenda o artículo que creamos es diseñado con dedicación y fabricado con los más altos estándares de calidad. Conoce más detalle sobre nosotros</p>
+          <p class="m-5 text-justify">PROESTATAL se especializa en la confección textil personalizada, adaptándonos a tus gustos y necesidades. Cada prenda o artículo que creamos es diseñado con dedicación y fabricado con los más altos estándares de calidad. Conoce más detalle sobre nosotros</p>
         </div>
         <div class="col-6 text-center">
           <img src="./assets/imagenes/proestatal.png" alt="imgsercivios" class="imgsercivios">
           
-          <a class="cta text-center" href="./WSM.html"><br>
+          <a class="cta text-center" href="./proestatal.html"><br>
             <img src="./assets/imagenes/lupa.png" class="usuario" alt="">
             <span class="hover-underline-animation"> DETALLES </span>
           </a>
@@ -406,7 +403,9 @@
                 <h1 class="mb-4 font1 ">¿Necesitas ayuda?</h1>
                 <p class="lead ">No dudes en contactarnos y con gusto te atenderemos</p>
                 <div class="d-flex flex-wrap ">
-                    <button class="btn btn-dark btn-lg">ESCRIBENOS</button>
+                    <button class="btn btn-dark btn-lg" type="button" >ESCRIBENOS<a href="https://api.whatsapp.com/send/?phone=3118914319" class="btn btn-outline-success btn-lg mx-1 mb-1" aria-label="WhatsApp">
+                      <i class="fab fa-whatsapp "></i>
+                  </a></button>
                 </div>
             </div>
         </div>
@@ -445,10 +444,10 @@
           <div class="col-md-6">
               <nav class="footer-nav">
                   <ul class="list-inline text-md-end mb-0">
-                      <li class="list-inline-item"><a href="#" class="text-light">inicio</a></li>
-                      <li class="list-inline-item"><a href="#" class="text-light">Catálogo</a></li>
-                      <li class="list-inline-item"><a href="#" class="text-light">ISAM Bordados</a></li>
-                      <li class="list-inline-item"><a href="#" class="text-light">PROESTATAL </a></li>
+                      <li class="list-inline-item"><a href="#inicio" class="text-light">inicio</a></li>
+                      <li class="list-inline-item"><a href="#catalogo" class="text-light">Catálogo</a></li>
+                      <li class="list-inline-item"><a href="./ISAM.html" class="text-light">ISAM Bordados</a></li>
+                      <li class="list-inline-item"><a href="./proestatal.html" class="text-light">PROESTATAL </a></li>
                   </ul>
               </nav>
           </div>

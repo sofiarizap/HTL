@@ -14,7 +14,9 @@
   text-align: center;
 }
 .whatsappmodal{
-  z-index: 100;
+  z-index: 1000;
+  width: 3rem;
+  margin: 10px;
 }
 .imglogo {
   height: 70px;
