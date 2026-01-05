@@ -1,524 +1,579 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="shortcut icon" href="./assets/imagenes/flaticon.png" type="image/x-icon">
-    <title>Inicio | HTL </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-<body>
-  <div id="app">
-  <header class="hero-section">
-  <div class="container h-100">
-      <div class="row h-100 align-items-end">
-          <div id="inicio" class="col-12 text-start mb-5 ">
-              <a class="nav-link motto font1 text-white" ></a>
-          </div>
-      </div>
-  </div>
-  </header>
-  <section class="mission-vision py-5 ">
-    <div class="container ">
-      <div class="col-12 text-center mt-4">
-        <h2 class="card-title text-center mb-4 font1">NUESTRO LEMA</h2>
-          <p class="card-text mb-5">Proveer a las Fuerzas militares y a los profesionales de seguridad con equipos y productos de alta calidad que garanticen su protección, eficiencia y éxito en el cumplimiento de sus misiones. nos comprometemos a ofrecer innovación, durabilidad y un servicio excepcional para satisfacer las necesidades de quienes sirven y protegen.</h1>
-      </div>
-        <div id="conocenos" class="row ">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="motto font1  mb-3">NUESTRA MISIÓN</h2>
-                        <p class="card-text">Nuestra misión es liderar la innovación tecnológica, proporcionando soluciones que mejoren la vida de las personas y contribuyan al progreso sostenible de la sociedad.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="motto font1  mb-3">NUESTRA VISIÓN</h2>
-                        <p class="card-text">Aspiramos a ser reconocidos globalmente como pioneros en el desarrollo de tecnologías transformadoras, inspirando un futuro donde la innovación y la sostenibilidad vayan de la mano.</p>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-    </section>
-    <!-- modal ingresar-->
-<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body p-0">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-md-6 bg-black text-white d-flex align-items-center justify-content-center">
-                            <div class="text-center">
-                              <img src="./assets/imagenes/bannerfondonegro.png" class="imglogo justify-content-center ms-3">
-                                <p>Ingresa a tu cuenta o crea una nueva</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs" id="authTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="true">Registro</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="false">Ingresar</button>
-                                    </li>
-                                </ul>
-                                <div class="tab-content mt-3" id="authTabContent">
-                                    <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                        <form id="registerForm">
-                                            <div class="mb-3">
-                                                <label for="registerName" class="form-label">Nombre</label>
-                                                <input type="text" class="form-control" id="registerName" required aria-describedby="nameError">
-                                                <div id="nameError" class="invalid-feedback"></div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="registerEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="registerEmail" required aria-describedby="emailError">
-                                                <div id="emailError" class="invalid-feedback"></div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="registerPassword" class="form-label">Contraseña</label>
-                                                <input type="password" class="form-control" id="registerPassword" required aria-describedby="passwordError">
-                                                <div id="passwordError" class="invalid-feedback"></div>
-                                            </div>
-                                            <button type="submit" class="btn btn-dark w-100">REGISTRARSE</button>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
-                                        <form id="loginForm">
-                                            <div class="mb-3">
-                                                <label for="loginEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="loginEmail" required aria-describedby="loginEmailError">
-                                                <div id="loginEmailError" class="invalid-feedback"></div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="loginPassword" class="form-label">Contraseña</label>
-                                                <input type="password" class="form-control" id="loginPassword" required aria-describedby="loginPasswordError">
-                                                <div id="loginPasswordError" class="invalid-feedback"></div>
-                                            </div>
-                                            <button type="submit" class="btn btn-dark w-100">Ingresar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  
-<!-- Button modal whatsapp -->
-<img src="./assets/imagenes/whatsapp.png" type="button" class=" whatsappmodal position-fixed bottom-0 end-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-</img>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/imagenes/flaticon.png" type="image/x-icon">
+  <title>Inicio | HTL</title>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">CONTÁCTANOS</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿QUIERES SER DIRIGIDO A ESTA APLICACIÓN?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
-        <a type="button" href="https://api.whatsapp.com/send/?phone=3118914319"  class="btn btn-primary">SI</a>
-      </div>
-    </div>
-  </div>
-</div>
-  <div class="alerta fixed-top">
-      <p>ENVIOS A NIVEL NACIONAL</p>
-  </div>
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg  fixed-top">
-    <div class="container-fluid nav ">
-      <img src="./assets/imagenes/banner.png" class="imglogo" alt="">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+<div id="app">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid nav">
+      <img src="./assets/imagenes/banner.png" class="imglogo" alt="HTL logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-label="Abrir menú">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-        </ul>
-        <a class="navbar-brand" href="./carrito.html"><img src="./assets/imagenes/carrito-de-compras.png"  alt="carrito"  href="./carrito.html"  type="button"  class=" carrito"></a>
-        <img src="./assets/imagenes/usuario.png" alt="usuario" class="usuario" data-bs-toggle="modal" data-bs-target="#authModal" type="button" alt="carrito" class=" btn carrito">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+        <a class="navbar-brand" href="./carrito.html" aria-label="Ir al carrito">
+          <img src="./assets/imagenes/carrito-de-compras.png" alt="Carrito" class="carrito">
+        </a>
+
+        <button class="btn p-0 bg-transparent border-0" type="button" data-bs-toggle="modal" data-bs-target="#authModal" aria-label="Abrir autenticación">
+          <img src="./assets/imagenes/usuario.png" alt="Usuario" class="usuario">
+        </button>
       </div>
     </div>
   </nav>
-  
+
+  <!-- Alerta fija -->
+  <div class="alerta fixed-top">
+    <p>ENVIOS A NIVEL NACIONAL</p>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container h-100">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/imagenes/flaticon.png" type="image/x-icon">
+  <title>Inicio | HTL</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+<div id="app">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid nav">
+      <img src="./assets/imagenes/banner.png" class="imglogo" alt="HTL logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+        <a class="navbar-brand" href="./carrito.html" aria-label="Ir al carrito">
+          <img src="./assets/imagenes/carrito-de-compras.png" alt="Carrito" class="carrito">
+        </a>
+
+        <button class="btn p-0 bg-transparent border-0" type="button" data-bs-toggle="modal" data-bs-target="#authModal" aria-label="Abrir autenticación">
+          <img src="./assets/imagenes/usuario.png" alt="Usuario" class="usuario">
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Alerta fija -->
+  <div class="alerta fixed-top">
+    <p>ENVIOS A NIVEL NACIONAL</p>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="container h-100">
+      <div class="row h-100 align-items-end">
+        <div id="inicio" class="col-12 text-start mb-5">
+          <a class="nav-link motto font1 text-white"></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Misión / Visión -->
+  <section class="mission-vision py-5">
+    <div class="container">
+      <div class="col-12 text-center mt-4">
+        <h2 class="card-title text-center mb-4 font1">NUESTRO LEMA</h2>
+        <p class="card-text mb-5">
+          Proveer a las Fuerzas militares y a los profesionales de seguridad con equipos y productos de alta calidad
+          que garanticen su protección, eficiencia y éxito en el cumplimiento de sus misiones. Nos comprometemos a ofrecer
+          innovación, durabilidad y un servicio excepcional para satisfacer las necesidades de quienes sirven y protegen.
+        </p>
+      </div>
+
+      <div id="conocenos" class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="motto font1 mb-3">NUESTRA MISIÓN</h2>
+              <p class="card-text">
+                Nuestra misión es liderar la innovación tecnológica, proporcionando soluciones que mejoren la vida
+                de las personas y contribuyan al progreso sostenible de la sociedad.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="motto font1 mb-3">NUESTRA VISIÓN</h2>
+              <p class="card-text">
+                Aspiramos a ser reconocidos globalmente como pioneros en el desarrollo de tecnologías transformadoras,
+                inspirando un futuro donde la innovación y la sostenibilidad vayan de la mano.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal autenticación -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-6 bg-black text-white d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <img src="./assets/imagenes/bannerfondonegro.png" class="imglogo justify-content-center ms-3" alt="HTL">
+                  <p>Ingresa a tu cuenta o crea una nueva</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card-body">
+                  <ul class="nav nav-tabs" id="authTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="true">Registro</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="false">Ingresar</button>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content mt-3" id="authTabContent">
+                    <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
+                      <form id="registerForm" novalidate>
+                        <div class="mb-3">
+                          <label for="registerName" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="registerName" required aria-describedby="nameError">
+                          <div id="nameError" class="invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="registerEmail" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="registerEmail" required aria-describedby="emailError">
+                          <div id="emailError" class="invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="registerPassword" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" id="registerPassword" required aria-describedby="passwordError">
+                          <div id="passwordError" class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">REGISTRARSE</button>
+                      </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
+                      <form id="loginForm" novalidate>
+                        <div class="mb-3">
+                          <label for="loginEmail" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="loginEmail" required aria-describedby="loginEmailError">
+                          <div id="loginEmailError" class="invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="loginPassword" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" id="loginPassword" required aria-describedby="loginPasswordError">
+                          <div id="loginPasswordError" class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Ingresar</button>
+                      </form>
+                    </div>
+                  </div><!-- tab-content -->
+                </div><!-- card-body -->
+              </div><!-- col -->
+            </div><!-- row -->
+          </div><!-- card -->
+        </div><!-- modal-body -->
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- modal -->
+
+  <!-- Botón modal WhatsApp -->
+  <button type="button" class="whatsappmodal position-fixed bottom-0 end-0 btn p-0 border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-label="Contacto WhatsApp">
+    <img src="./assets/imagenes/whatsapp.png" alt="WhatsApp">
+  </button>
+
+  <!-- Modal WhatsApp -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">CONTÁCTANOS</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          ¿QUIERES SER DIRIGIDO A ESTA APLICACIÓN?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+          <a href="https://api.whatsapp.com/send/?phone=3118914319" class="btn btn-primary">SI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Catálogo -->
   <div class="container-fluid">
     <div class="container py-5">
       <h1 class="text-center mb-5 font1">NUESTROS ARTICULOS</h1>
+
       <div class="row g-4 justify-content-center">
-          <div class="col-md-4 col-sm-6">
-            <button class="category-btn" 
-              style="background-image: url('https://img.freepik.com/free-photo/person-with-gothic-style-costume-performing-drama-world-theatre-day_23-2151182208.jpg?t=st=1729128683~exp=1729132283~hmac=1cda75eaeee5a158f50ebc7ffccfdaf3f1815c71ad8fecb628a967cd6dd9aad1&w=740');" 
-              >
-              <span class="category-text">Botas</span>
-            </button>
-              
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <button class="category-btn" 
-              style="background-image: url('https://lh4.googleusercontent.com/proxy/Gpj4HYIGu5-HQxtUnhslu3XEsMMvB_xG5uNtuAxSShBuvF3RWq5R2hcMqa6dI2MqnqBgdBuN0aM9sofAEuGaTpDESF7fPMkoTwuEj5EJJvhM0DZRI2EmrklWO9w-TZ2LJ0Kha_gw57lxM6wR6ZQ');" 
-              >
-              <span class="category-text">Elementos Tácticos</span>
-            </button>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <button class="category-btn" 
-              style="background-image: url('https://img.freepik.com/free-photo/still-life-soldier-helmet_23-2151633267.jpg?t=st=1729128789~exp=1729132389~hmac=489b6a8eeefd25dad533cd3468d9a7337e859d09f6da60a3744399b77f517a88&w=826');" 
-              >
-              <span class="category-text">Maletas</span>
-            </button>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <button class="category-btn" 
-              style="background-image: url('https://img.freepik.com/free-photo/camouflage-textured-military-uniforms_23-2149341312.jpg?t=st=1729129310~exp=1729132910~hmac=b658db517e8bc4aa1a0e8697cf827a1d7869c3e4cce5d4e5b0d9cc1126ccdade&w=826');" 
-              >
-              <span class="category-text">Ropa</span>
-            </button>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <button class="category-btn" 
-            style="background-image: url('https://img.freepik.com/free-photo/woman-getting-ready-her-mission_23-2149222714.jpg?t=st=1729127816~exp=1729131416~hmac=45f38b130024ce4eafc28667d859ce77ac02eb45c16a146152d0dabc3b0e0373&w=826');" 
-            >
+        <div class="col-md-4 col-sm-6">
+          <button class="category-btn" type="button" style="background-image: url('./assets/imagenes/botas.jpg');">
+            <span class="category-text">Botas</span>
+          </button>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <button class="category-btn" type="button" style="background-image: url('./assets/imagenes/ropa.jpg');">
+            <span class="category-text">Ropa</span>
+          </button>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <button class="category-btn" type="button" style="background-image: url('./assets/imagenes/elementos_tacticos.jpg');">
+            <span class="category-text">Elementos Tácticos</span>
+          </button>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <button class="category-btn" type="button" style="background-image: url('./assets/imagenes/mochilas.jpg');">
+            <span class="category-text">Mochilas</span>
+          </button>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <button class="category-btn" type="button" style="background-image: url('./assets/imagenes/gorras.jpg');">
             <span class="category-text">Gorras</span>
           </button>
-          </div>
+        </div>
       </div>
-  </div>
+    </div>
+
     <div class="row">
       <div id="catalogo" class="d-flex justify-content-center flex-wrap flex-md-nowrap titulo-catalogo align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-center font1">CATÁLOGO </h1>
-    </div>
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky pt-3">
-                <div class="mb-4">
-                  <form class="d-flex justify-content-around align-items-center" role="search">
-                    <input class="form-control " type="search" v-model="inputBusqueda" @input="busquedaCruzada"
-                      placeholder="Buscar" aria-label="Search">
-                    
-                  </form></div>
-                <ul class="nav ">
-                  <div class="check m-3" id="checkCategory">
-                    
-                    <template  v-for="categoria of categorias">
-                      
-                      <input  v-model="checked" @change="busquedaCruzada" :value="categoria"  :id="categoria" autocomplete="off" 
-                      checked type="checkbox" class="buttoncatego" data-text="Awesome">
-                        <span class="actual-text">&nbsp;{{categoria}} &nbsp;</span>
-                         <br>
-                    </input>
-                    </template>
-        
-                  </div>
-                </ul>
+        <h2 class="h2 text-center font1">CATÁLOGO</h2>
+      </div>
+
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <div class="mb-4">
+            <form class="d-flex justify-content-around align-items-center" role="search">
+              <input class="form-control" type="search" v-model="inputBusqueda" @input="busquedaCruzada" placeholder="Buscar" aria-label="Buscar">
+            </form>
+          </div>
+
+          <ul class="nav">
+            <div class="check m-3" id="checkCategory">
+              <template v-for="categoria of categorias" :key="categoria">
+                <input
+                  v-model="checked"
+                  @change="busquedaCruzada"
+                  :value="categoria"
+                  :id="categoria"
+                  type="checkbox"
+                  class="buttoncatego"
+                  autocomplete="off"
+                >
+                <span class="actual-text">&nbsp;{{ categoria }}&nbsp;</span><br>
+              </template>
             </div>
-        </nav>
-        <main class="row catalogo justify-content-center col-md-9">
-          <!-- Agregar una fila con cards distribuidas en columnas -->
-          <div class="row justify-content-center">
-            <div v-for="producto in productosFiltrados" :key="producto.id" class="col-md-4 col-sm-6 col-12 d-flex justify-content-center">
-              <div class="card cardproducto" style="width: 15rem;">
-                <img src="./assets/imagenes/articulo.jpg" class="card-img-top articulofoto" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{ producto.nombre.toUpperCase() }}</h5>
-                  <p class="card-text">{{ producto.descripcion }}</p>
-                  <div class="contenedorprecio">
-                    <a class="navbar-brand" href="./carrito.html">
-                      <img src="./assets/imagenes/carrito-de-compras.png" alt="carrito" class="carrito">
-                    </a>
-                    <p class="mt-3">{{ producto.precio }}</p>
-                    <div class="d-flex justify-content-around">
-                      <a :href="'./details.html?id=' + producto.id" class="btn btn-dark">Ver más</a>
-                    </div>
-                  </div>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="row catalogo justify-content-center col-md-9">
+        <!-- Productos -->
+        <div class="row justify-content-center" id="productos">
+          <div
+            v-for="producto in productosFiltrados"
+            :key="producto.id"
+            class="col-md-4 col-sm-6 col-12 d-flex justify-content-center mb-4"
+          >
+            <div class="card bg-dark text-white shadow border border-secondary" style="width: 18rem; border-radius: 12px; overflow: hidden;">
+              <div class="producto-con-fondo">
+                <img
+                  :src="toDirectDriveUrl(producto.imagenUrl)"
+                  @error="imagenError($event)"
+                  class="card-img-top articulofoto"
+                  alt="Producto"
+                >
+              </div>
+
+              <div class="card-body text-center">
+                <h5 class="card-title text-uppercase">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <p class="fw-bold fs-5">${{ producto.precio }}</p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <button @click="agregarAlCarrito(producto)" class="btn btn-outline-success btn-sm agregar-hover" title="Agregar al carrito" type="button">🛒</button>
+                  <a :href="'./details.html?id=' + producto.id" class="btn btn-outline-light btn-sm">Ver más</a>
                 </div>
               </div>
             </div>
           </div>
-        </main>
-        
-            
-                
-            </div>
-            <nav aria-label="Page navigation" class="my-4">
-                <ul class="pagination justify-content-center ">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </main>
-    </div>
-</div>
-  
+        </div>
 
+        <!-- Paginación (placeholder) -->
+        <nav aria-label="Page navigation" class="my-4">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+          </ul>
+        </nav>
+      </main>
+    </div>
+  </div>
+
+  <!-- Carrusel -->
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="./assets/imagenes/fondo1.jpg" class="d-block imgcarrusel w-100" alt="...">
+        <img src="./assets/imagenes/fondo1.jpg" class="d-block imgcarrusel w-100" alt="Imagen 1">
       </div>
       <div class="carousel-item">
-        <img src="./assets/imagenes/fondo2.jpg" class="d-block imgcarrusel w-100" alt="...">
+        <img src="./assets/imagenes/fondo2.jpg" class="d-block imgcarrusel w-100" alt="Imagen 2">
       </div>
       <div class="carousel-item">
-        <img src="./assets/imagenes/fondo.jpg" class="d-block imgcarrusel w-100" alt="...">
+        <img src="./assets/imagenes/fondo.jpg" class="d-block imgcarrusel w-100" alt="Imagen 3">
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" aria-label="Anterior">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" aria-label="Siguiente">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
     </button>
   </div>
+
+  <!-- Servicios -->
   <div class="servicios" id="servicios">
-    <div>
-      <h2 class="font1 ">Conoce sobre nuestros servicios </h2>
-    </div>
+    <div><h2 class="font1">Conoce sobre nuestros servicios</h2></div>
+
     <div class="row">
       <div class="cajaserv">
         <div class="col-6 text-center">
-          <img src="./assets/imagenes/ISAM.png" class="imgsercivios" alt="">
-          <p class="font1 mt-3 ">BORDADOS</p>
-          <a class="cta text-center " href="./ISAM.html">
-            <img src="./assets/imagenes/lupa.png" class="usuario" alt=""><span class="hover-underline-animation text-center"> DETALLES </span>
+          <img src="./assets/imagenes/ISAM.png" class="imgsercivios" alt="ISAM">
+          <p class="font1 mt-3">BORDADOS</p>
+          <a class="cta text-center" href="./ISAM.html">
+            <img src="./assets/imagenes/lupa.png" class="usuario" alt="Ver detalles"> <span class="hover-underline-animation text-center">DETALLES</span>
           </a>
         </div>
         <div class="col-6">
-          <p class="m-5"> En ISAM estamos enfocados en bordados de alta calidad, desde grandes producciones hasta piezas personalizadas. Ofrecemos servicios para todo tipo de proyectos, incluidos bordados militares y empresariales. Conoce más detalle sobre nosotros.</p>
+          <p class="m-5">
+            En ISAM estamos enfocados en bordados de alta calidad, desde grandes producciones hasta piezas personalizadas.
+            Ofrecemos servicios para todo tipo de proyectos, incluidos bordados militares y empresariales. Conoce más detalle sobre nosotros.
+          </p>
         </div>
       </div>
+
       <div class="cajaserv mt-5">
         <div class="col-6">
-          <p class="m-5 text-justify">PROESTATAL se especializa en la confección textil personalizada, adaptándonos a tus gustos y necesidades. Cada prenda o artículo que creamos es diseñado con dedicación y fabricado con los más altos estándares de calidad. Conoce más detalle sobre nosotros</p>
+          <p class="m-5 text-justify">
+            PROESTATAL se especializa en la confección textil personalizada, adaptándonos a tus gustos y necesidades. Cada prenda o artículo que creamos
+            es diseñado con dedicación y fabricado con los más altos estándares de calidad. Conoce más detalle sobre nosotros.
+          </p>
         </div>
         <div class="col-6 text-center">
-          <img src="./assets/imagenes/proestatal.png" alt="imgsercivios" class="imgsercivios">
-          
+          <img src="./assets/imagenes/proestatal.png" alt="PROESTATAL" class="imgsercivios">
           <a class="cta text-center" href="./proestatal.html"><br>
-            <img src="./assets/imagenes/lupa.png" class="usuario" alt="">
-            <span class="hover-underline-animation"> DETALLES </span>
+            <img src="./assets/imagenes/lupa.png" class="usuario" alt="Ver detalles">
+            <span class="hover-underline-animation">DETALLES</span>
           </a>
         </div>
-        
       </div>
     </div>
   </div>
+
+  <!-- Recomendaciones -->
   <section class="recomendaciones">
     <h2 class="titulo-seccion">NUESTRA MISION ES SATISFACERLOS</h2>
-
     <div class="productos">
-
-        <!-- Producto 1 -->
-        <div class="producto">
-            <img src="ruta/a/imagen1.jpg" alt="Mochila táctica Commander">
-            <h3 class="nombre-producto">Mochila táctica "Commander"</h3>
-            <p class="descripcion">Ideal para tus aventuras al aire libre. Fabricada con materiales de alta resistencia, ofrece gran capacidad y comodidad en cualquier terreno.</p>
-            <div class="valoracion">⭐⭐⭐⭐⭐</div>
-            <p class="satisfaccion">"La mochila es increíble, muy resistente y espaciosa. Perfecta para mis actividades en el campo. ¡Totalmente recomendada!" – <strong>Carlos A.</strong></p>
-        </div>
-
-        <!-- Producto 2 -->
-        <div class="producto">
-            <img src="ruta/a/imagen2.jpg" alt="Chaqueta Multicam® Invierno">
-            <h3 class="nombre-producto">Chaqueta Multicam® Invierno</h3>
-            <p class="descripcion">Chaqueta militar de camuflaje, pensada para resistir bajas temperaturas. Con forro térmico y tela impermeable.</p>
-            <div class="valoracion">⭐⭐⭐⭐⭐</div>
-            <p class="satisfaccion">"¡Perfecta para el frío! Me ha mantenido seco y cálido en mis salidas al campo de entrenamiento. 100% recomendada." – <strong>Marta P.</strong></p>
-        </div>
-
-        <!-- Producto 3 -->
-        <div class="producto">
-            <img src="ruta/a/imagen3.jpg" alt="Botas de Combate Tactical Force">
-            <h3 class="nombre-producto">Botas de Combate "Tactical Force"</h3>
-            <p class="descripcion">Botas diseñadas para ofrecer máxima protección y comodidad en terrenos difíciles. Suela antideslizante y material resistente.</p>
-            <div class="valoracion">⭐⭐⭐⭐⭐</div>
-            <p class="satisfaccion">"Las botas son muy duraderas, tienen un excelente soporte y son súper cómodas. ¡Mis pies se sienten protegidos todo el tiempo!" – <strong>Juan M.</strong></p>
-        </div>
-
-        <!-- Producto 4 -->
-        <div class="producto">
-            <img src="ruta/a/imagen4.jpg" alt="Guantes tácticos Stealth Pro">
-            <h3 class="nombre-producto">Guantes tácticos "Stealth Pro"</h3>
-            <p class="descripcion">Guantes tácticos de alta resistencia y máxima protección. Ideales para actividades militares o de supervivencia.</p>
-            <div class="valoracion">⭐⭐⭐⭐⭐</div>
-            <p class="satisfaccion">"Excelente ajuste, muy cómodos y resistentes. Perfectos para mis entrenamientos de campo." – <strong>Ana T.</strong></p>
-        </div>
-
-        <!-- Producto 5 -->
-        <div class="producto">
-            <img src="ruta/a/imagen5.jpg" alt="Linterna táctica LED">
-            <h3 class="nombre-producto">Linterna táctica LED</h3>
-            <p class="descripcion">Linterna táctica de alta potencia con múltiples modos de luz, resistente al agua y diseñada para soportar condiciones extremas.</p>
-            <div class="valoracion">⭐⭐⭐⭐⭐</div>
-            <p class="satisfaccion">"¡La linterna es muy potente y duradera! Me ha acompañado en todas mis excursiones y nunca me ha fallado." – <strong>Luis G.</strong></p>
-        </div>
-
+      <div class="producto">
+        <img src="ruta/a/imagen1.jpg" alt="Mochila táctica Commander">
+        <h3 class="nombre-producto">Mochila táctica "Commander"</h3>
+        <p class="descripcion">Ideal para tus aventuras al aire libre…</p>
+        <div class="valoracion">⭐⭐⭐⭐⭐</div>
+        <p class="satisfaccion">"La mochila es increíble…" – <strong>Carlos A.</strong></p>
+      </div>
+      <div class="producto">
+        <img src="ruta/a/imagen2.jpg" alt="Chaqueta Multicam Invierno">
+        <h3 class="nombre-producto">Chaqueta Multicam® Invierno</h3>
+        <p class="descripcion">Resistente a bajas temperaturas…</p>
+        <div class="valoracion">⭐⭐⭐⭐⭐</div>
+        <p class="satisfaccion">"¡Perfecta para el frío!" – <strong>Marta P.</strong></p>
+      </div>
+      <!-- …otros productos de ejemplo -->
     </div>
+    <p class="mensaje-final">"Nuestros clientes confían en nosotros…"</p>
+  </section>
 
-    <p class="mensaje-final">"Nuestros clientes confían en nosotros por la calidad y fiabilidad de nuestros productos. ¡No pierdas la oportunidad de equiparte con lo mejor!"</p>
-</section>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <!-- Navbar anclas -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Abrir navegación">
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="#map-section">UBICACIÓN</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#social-section">REDES</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#service-section">SERVICIO AL CLIENTE</a>
-              </li>
-          </ul>
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#map-section">UBICACIÓN</a></li>
+          <li class="nav-item"><a class="nav-link" href="#social-section">REDES</a></li>
+          <li class="nav-item"><a class="nav-link" href="#service-section">SERVICIO AL CLIENTE</a></li>
+        </ul>
       </div>
-  </div>
-</nav>
-<section id="map-section" class="py-5">
-  <div class="container">
-      <h2 class="text-center mb-4 font1">ENCUENTRANOS</h2>
-      <div class="row">
-          <div class="col-lg-8 mb-4">
-              <div class="embed-responsive j embed-responsive-16by9">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15906.047605453366!2d-74.07269445252314!3d4.680717624706632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sescuela%20militar%20de%20cadetes!5e0!3m2!1ses-419!2sco!4v1728487748668!5m2!1ses-419!2sco" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" class="" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.244027011633!2d-74.03910265557249!3d4.684912400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b29bef2c90f%3A0xed35af4a852be4c6!2sGranados%20y%20Condecoraciones%20Cant%C3%B3n%20Norte!5e0!3m2!1ses-419!2sco!4v1728488085782!5m2!1ses-419!2sco" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" class="" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-          </div>
-          <div class="col-lg-4">
-              <h3 class="mb-3">NUESTRAS DIRECCIONES</h3>
-              <p class="fw-bold">Escuela Militar de Cadetes</p> <p>Bar de Cadetes<br>Local 19</p>
-              <p class="fw-bold">Cantón Norte</p> <p>Calle 106 # 7 a - 25<br>Local 202</p>
-          </div>
-      </div>
-  </div>
-</section>
-
-<section id="social-section" class="py-5 ">
-  <div class="container text-center ">
-      <h2 class="mb-4 font1 ">SIGUENOS EN REDES</h2>
-      <div class="row justify-content-center">
-          <div class="col-md-8">
-              <a href="https://www.facebook.com/share/14s9XMHNeJ/?mibextid=wwXIfr" class="btn btn-outline-primary btn-lg mx-2 mb-3" aria-label="Facebook">
-                  <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://www.tiktok.com/@miguel.angel.porras?_t=8mg6OAYA1tV&_r=1" class="btn btn-outline-info btn-lg mx-2 mb-3" aria-label="Tiktok">
-                  <i class="fab fa-tiktok"></i>
-              </a>
-              <a href="https://www.instagram.com/soluciones_htl/" class="btn btn-outline-danger btn-lg mx-2 mb-3" aria-label="Instagram">
-                  <i class="fab fa-instagram"></i>
-              </a>
-              <a href="https://api.whatsapp.com/send/?phone=3118914319" class="btn btn-outline-success btn-lg mx-2 mb-3" aria-label="WhatsApp">
-                  <i class="fab fa-whatsapp"></i>
-              </a>
-          </div>
-      </div>
-  </div>
-</section>
-
-<section id="service-section" class="py-5 customer-service-section">
-    <div class="container-fluid h-100 customer-service-sectio">
-        <div class="row h-100 align-items-center">
-            <div class="col-md-9 text-white">
-                <h1 class="mb-4 font1 ">¿Necesitas ayuda?</h1>
-                <p class="lead ">No dudes en contactarnos y con gusto te atenderemos</p>
-                <div class="d-flex flex-wrap ">
-                    <button class="btn btn-dark btn-lg" type="button" >ESCRIBENOS<a href="https://api.whatsapp.com/send/?phone=3118914319" class="btn btn-outline-success btn-lg mx-1 mb-1" aria-label="WhatsApp">
-                      <i class="fab fa-whatsapp "></i>
-                  </a></button>
-                </div>
-            </div>
-        </div>
     </div>
-</section>
+  </nav>
 
-</div>
+  <!-- Mapas -->
+  <section id="map-section" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4 font1">ENCUÉNTRANOS</h2>
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15906.047605453366!2d-74.07269445252314!3d4.680717624706632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sescuela%20militar%20de%20cadetes!5e0!3m2!1ses-419!2sco!4v1728487748668!5m2!1ses-419!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.244027011633!2d-74.03910265557249!3d4.684912400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b29bef2c90f%3A0xed35af4a852be4c6!2sGranados%20y%20Condecoraciones%20Cant%C3%B3n%20Norte!5e0!3m2!1ses-419!2sco!4v1728488085782!5m2!1ses-419!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h3 class="mb-3">NUESTRAS DIRECCIONES</h3>
+          <p class="fw-bold">Escuela Militar de Cadetes</p>
+          <p>Bar de Cadetes<br>Local 19</p>
+          <p class="fw-bold">Cantón Norte</p>
+          <p>Calle 106 # 7 a - 25<br>Local 202</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Redes -->
+  <section id="social-section" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4 font1">SÍGUENOS EN REDES</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <a href="https://www.facebook.com/share/14s9XMHNeJ/?mibextid=wwXIfr" class="btn btn-outline-primary btn-lg mx-2 mb-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@miguel.angel.porras?_t=8mg6OAYA1tV&_r=1" class="btn btn-outline-info btn-lg mx-2 mb-3" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/soluciones_htl/" class="btn btn-outline-danger btn-lg mx-2 mb-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=3118914319" class="btn btn-outline-success btn-lg mx-2 mb-3" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio al cliente -->
+  <section id="service-section" class="py-5 customer-service-section">
+    <div class="container-fluid h-100 customer-service-sectio">
+      <div class="row h-100 align-items-center">
+        <div class="col-md-9 text-white">
+          <h1 class="mb-4 font1">¿Necesitas ayuda?</h1>
+          <p class="lead">No dudes en contactarnos y con gusto te atenderemos</p>
+          <div class="d-flex flex-wrap">
+            <a class="btn btn-dark btn-lg d-inline-flex align-items-center" href="https://api.whatsapp.com/send/?phone=3118914319" aria-label="Escríbenos por WhatsApp">
+              ESCRÍBENOS <i class="fab fa-whatsapp ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /#app -->
+
+<!-- Footer -->
 <footer class="bg-dark text-light py-5">
   <div class="container">
-      <div class="row">
-          
-          <div class="col-md-3 mb-4 mb-md-0">
-              <h5 class="mb-3">Contáctanos</h5>
-              <ul class="list-unstyled">
-                  <li><i class="fas fa-phone me-2"></i>+ 57 3118914319</li>
-                  <li><i class="fas fa-phone me-2"></i>+ 57 3224325980</li>
-              </ul>
-          </div>
-          <div class="col-md-3 mb-4 mb-md-0">
-        <img src="./assets/imagenes/bannerfondonegro-removebg-preview.png" class="footerimg" alt="">
+    <div class="row">
+      <div class="col-md-3 mb-4 mb-md-0">
+        <h5 class="mb-3">Contáctanos</h5>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-phone me-2"></i>+ 57 3118914319</li>
+          <li><i class="fas fa-phone me-2"></i>+ 57 3224325980</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 mb-md-0">
+        <img src="./assets/imagenes/bannerfondonegro-removebg-preview.png" class="footerimg" alt="HTL">
+      </div>
+
+      <div class="col-md-3">
+        <h5 class="mb-3">Síguenos</h5>
+        <div class="d-flex">
+          <a href="https://www.instagram.com/soluciones_htl/" class="text-light me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@miguel.angel.porras?_t=8mg6OAYA1tV&_r=1" class="text-light" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
     </div>
-          <div class="col-md-3">
-              <h5 class="mb-3">Siguenos</h5>
-              <div class="d-flex">
-                  <a href="https://www.instagram.com/soluciones_htl/" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                  <a href="https://www.tiktok.com/@miguel.angel.porras?_t=8mg6OAYA1tV&_r=1" class="text-light"><i class="fab fa-tiktok"></i></a>
-              </div>
-          </div>
+
+    <hr class="my-4">
+    <div class="row">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <p class="mb-0">&copy; 2025 HTL. Todos los derechos reservados.</p>
       </div>
-      
-      <hr class="my-4">
-      <div class="row">
-          <div class="col-md-6 mb-3 mb-md-0">
-              <p class="mb-0">&copy; 2025 HTL. Todos los derechos reservados.</p>
-          </div>
-          <div class="col-md-6">
-              <nav class="footer-nav">
-                  <ul class="list-inline text-md-end mb-0">
-                      <li class="list-inline-item"><a href="#inicio" class="text-light">inicio</a></li>
-                      <li class="list-inline-item"><a href="#catalogo" class="text-light">Catálogo</a></li>
-                      <li class="list-inline-item"><a href="./ISAM.html" class="text-light">ISAM Bordados</a></li>
-                      <li class="list-inline-item"><a href="./proestatal.html" class="text-light">PROESTATAL </a></li>
-                  </ul>
-              </nav>
-          </div>
+      <div class="col-md-6">
+        <nav class="footer-nav">
+          <ul class="list-inline text-md-end mb-0">
+            <li class="list-inline-item"><a href="#inicio" class="text-light">Inicio</a></li>
+            <li class="list-inline-item"><a href="#catalogo" class="text-light">Catálogo</a></li>
+            <li class="list-inline-item"><a href="./ISAM.html" class="text-light">ISAM Bordados</a></li>
+            <li class="list-inline-item"><a href="./proestatal.html" class="text-light">PROESTATAL</a></li>
+          </ul>
+        </nav>
       </div>
+    </div>
   </div>
 </footer>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="./assets/JS/index.js"></script>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+
+<!-- JS: orden correcto -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="./assets/JS/index.js"></script>
+
+<!-- Scroll suave anclas -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
     });
+  });
 </script>
 </body>
 </html>

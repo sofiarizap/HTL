@@ -1,60 +1,75 @@
-const {createApp} = Vue;
+const { createApp } = Vue;
+
+function toDirectDriveUrl(url) {
+  if (!url) return './assets/imagenes/no-disponible.png';
+  const s = String(url);
+
+  // /file/d/ID/...
+  let m = s.match(/\/file\/d\/([^/]+)/);
+  if (m) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+
+  // /d/ID/...
+  m = s.match(/\/d\/([^/]+)/);
+  if (m) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+
+  // ?id=ID  (open?id=..., uc?id=..., thumbnail?id=...)
+  m = s.match(/[?&](?:id|uc|thumbnail)=([^&]+)/);
+  if (m) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+
+  // /folders/ID no es imagen directa → placeholder
+  if (/\/folders\//.test(s)) {
+    return './assets/imagenes/no-disponible.png';
+  }
+
+  // Cualquier otra (ruta local o URL directa)
+  return s;
+}
 
 createApp({
-    data(){
-        return{
-            
-            categoria: [],
-            url:"",
-            productos:"",
-            productosActivos:"",
-            categorias: [],
-            productosFiltrados: [],
-            checked: [],
-            inputBusqueda: "",
-        }
+  data() {
+    return {
+      mensaje: "holi",
+      productos: []
+    };
+  },
+  computed: {
+    productosFiltrados() {
+      return (this.productos || []).filter(p => p.activo);
+    }
+  },
+  methods: {
+    toDirectDriveUrl, // disponible para usarlo en el template si quieres
+    imagenError(event) {
+      event.target.src = './assets/imagenes/no-disponible.png';
     },
-    created(){
-    this.url = "/productos";
-    this.loadData() 
+    agregarAlCarrito(producto) {
+      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+      const idx = carrito.findIndex(p => p.id === producto.id);
+      if (idx > -1) {
+        carrito[idx].cantidad += 1;
+      } else {
+        carrito.push({ ...producto, cantidad: 1 });
+      }
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert("Producto agregado al carrito");
+    }
+  },
+  created() {
+    axios.get("/productos")
+      .then(res => {
+        const data = Array.isArray(res.data) ? res.data : [];
+        // Normalizamos el campo de imagen y convertimos a URL directa si es Drive
+        this.productos = data.map(p => {
+          const cruda = p.imagenUrl ?? p.imagenURL ?? p.urlImagen ?? p.image ?? p.img;
+          return {
+            ...p,
+            imagenUrl: toDirectDriveUrl(cruda)
+          };
+        });
+        // Útil para verificar URLs efectivas en consola
+        console.log("Ejemplo producto:", this.productos[0]);
+      })
+      .catch(err => console.error("Error cargando productos:", err));
+  }
+}).mount('#app');
 
-    
-    },
-    methods: {
-        loadData: function(){
-            axios.get(this.url)
-            .then( res =>{
-              this.productos= res.data;
-              this.productosActivos= this.productos.filter(producto => producto.Activo == true)
-              this.productosFiltrados = res.data.map(producto => ({ ...producto }));
-              this.categorias = [... new Set(this.productos.map(producto => producto.categoria))];
-            })
-            .catch((error)=>{console.log(error)})
-        },
-        
-        busquedaCruzada: function () {
-            let filtroInput = this.productos.filter(producto => producto.nombre.toLowerCase().includes(this.inputBusqueda.toLowerCase()))
-            if (this.checked.length === 0) {
-                this.productosFiltrados = filtroInput
-            } else {
-                let filtroCheck = filtroInput.filter(categoria => this.checked.includes(categoria.categoria))
-                this.productosFiltrados = filtroCheck
-            }
-        },
-        
-    
-        async cargarImagen(event) {
-            const archivo = event.target.files[0];
-            const formData = new FormData();
-            formData.append("imagen", archivo);
-    
-            const respuesta = await axios.post("/productos/imagen", formData);
-            this.producto.imagenUrl = respuesta.data; // Guarda la URL de la imagen
-        },
-        async agregarProducto() {
-            await axios.post("/productos", this.producto);
-            alert("Producto agregado correctamente");
-        }
-    
-    }}
-).mount('#app')

@@ -1,257 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="shortcut icon" href="./assets/imagenes/flaticon.png" type="image/x-icon">
-    <title>Carrito | HTL </title>
-</head>
-<body>
-    <!-- Button modal whatsapp -->
-<img src="./assets/imagenes/whatsapp.png" type="button" class=" whatsappmodal position-fixed bottom-0 end-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-</img>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body class="bg-dark text-white">
+
+<div id="app" class="container mt-5">
+
+  <h2 class="text-center mb-4">Carrito de Compras</h2>
+
+  <div v-if="carrito.length > 0">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Subtotal</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in carrito" :key="item.id">
+          <td>{{ item.nombre }}</td>
+          <td>
+            <button @click="modificarCantidad(index, -1)" class="btn btn-sm btn-secondary">-</button>
+            {{ item.cantidad }}
+            <button @click="modificarCantidad(index, 1)" class="btn btn-sm btn-secondary">+</button>
+          </td>
+          <td>${{ item.precio }}</td>
+          <td>${{ item.precio * item.cantidad }}</td>
+          <td><button @click="eliminarProducto(index)" class="btn btn-danger btn-sm">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="text-end">Total: ${{ total }}</h4>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-success" @click="pagar">Pagar con Mercado Pago</button>
+    </div>
+  </div>
+
+  <div v-else class="text-center mt-5">
+    <p>No hay productos en el carrito.</p>
+  </div>
+
+  <!-- Modal de compra exitosa -->
+  <div class="modal fade" id="modalExito" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">CONTÁCTANOS</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title">¡Pago exitoso!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-      <div class="modal-body">
-        ¿QUIERES SER DIRIGIDO A ESTA APLICACIÓN?
-      </div>
+      <div class="modal-body">Tu compra fue registrada correctamente.</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
-        <a type="button" href="https://api.whatsapp.com/send/?phone=3118914319"  class="btn btn-primary">SI</a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
-    <div class="alerta fixed-top">
-        <p>ENVIOS A NIVEL NACIONAL</p>
-    </div>
-    <nav class="navbar navbar-expand-lg  fixed-top">
-      <div class="container-fluid nav ">
-        <img src="./assets/imagenes/banner.png" class="imglogo" alt="">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Catálogo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Nuestros servicios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sedes</a>
-            </li>
-          </ul>
-          <img src="./assets/imagenes/carrito-de-compras.png" alt="carrito" class="carrito">
-          <img src="./assets/imagenes/usuario.png" alt="usuario" class="usuario">
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid px-0">
-        <header class="bg-primary text-white py-3 sticky-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h1 class="h4 mb-0">Shopping Cart</h1>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
-                            <i class="bi bi-cart3"></i> View Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
 
-        <main class="container my-5">
-            <div class="row g-4">
-                <div class="col-md-8">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h2 class="card-title h5 mb-4">Productos en el Carrito</h2>
-                            <div class="cart-items">
-                                <div class="cart-item mb-3 p-3 border rounded">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-2">
-                                            <img src="./assets/imagenes/articulo.jpg" alt="Product 1" class="img-fluid rounded">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h3 class="h6 mb-0"><a href="#" class="text-dark text-decoration-none">Running Shoes</a></h3>
-                                            <p class="text-muted small mb-0">Size: 9, Color: Red</p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="input-group input-group-sm">
-                                                <button class="btn btn-outline-secondary" type="button">-</button>
-                                                <input type="text" class="form-control text-center" value="1" aria-label="Quantity">
-                                                <button class="btn btn-outline-secondary" type="button">+</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 text-end">
-                                            <p class="mb-0">$99.99</p>
-                                        </div>
-                                        <div class="col-md-2 text-end">
-                                            <button class="btn btn-sm btn-outline-danger">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item mb-3 p-3 border rounded">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-2">
-                                            <img src="./assets/imagenes/articulo.jpg" alt="Product 2" class="img-fluid rounded">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h3 class="h6 mb-0"><a href="#" class="text-dark text-decoration-none">Wireless Headphones</a></h3>
-                                            <p class="text-muted small mb-0">Color: Black</p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="input-group input-group-sm">
-                                                <button class="btn btn-outline-secondary" type="button">-</button>
-                                                <input type="text" class="form-control text-center" value="1" aria-label="Quantity">
-                                                <button class="btn btn-outline-secondary" type="button">+</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 text-end">
-                                            <p class="mb-0">$149.99</p>
-                                        </div>
-                                        <div class="col-md-2 text-end">
-                                            <button class="btn btn-sm btn-outline-danger">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h2 class="card-title h5 mb-4">Resumen de Compra</h2>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Subtotal</span>
-                                <span>$249.98</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Envio</span>
-                                <span>$10.00</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Impuestos</span>
-                                <span>$25.00</span>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between mb-4">
-                                <strong>Total</strong>
-                                <strong>$284.98</strong>
-                            </div>
-                            <a  class="btn btn-outline-dark w-100"  type="button" href="#checkout">Proceder con la compra</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container mt-5">
-                
-                <form id="checkoutForm" class="needs-validation" novalidate>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <h3>Dirección de envio</h3>
-                            <div class="mb-3">
-                                <label for="shippingName" class="form-label">Nombre Completo</label>
-                                <input type="text" class="form-control" id="shippingName" required>
-                                <div class="invalid-feedback">Por favor ingresa tu nombre completo.</div>
-                            </div>
-                            <div class="mb-3"></div>
-                                <label for="shippingName" class="form-label">Correo Electronico</label>
-                                <input type="email" class="form-control" id="shippingName" required>
-                                <div class="invalid-feedback">Por favor ingresa tu Correo.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="shippingAddress" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="shippingAddress" required>
-                                <div class="invalid-feedback">Por favor ingresa tu dirección.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="shippingCity" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" id="shippingCity" required>
-                                <div class="invalid-feedback">Por favor ingresa tu Ciudad.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="shippingZip" class="form-label">Telefono</label>
-                                <input type="number" class="form-control" id="shippingZip" required>
-                                <div class="invalid-feedback">Por favor ingresa tu Telefono.</div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    
-                    
 
-                    <button type="submit" class="btn btn-dark btn-lg w-100">Realizar Pedido</button>
-                </form>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script>
-                // Form validation
-                (function () {
-                    'use strict'
-                    var forms = document.querySelectorAll('.needs-validation')
-                    Array.prototype.slice.call(forms)
-                        .forEach(function (form) {
-                            form.addEventListener('submit', function (event) {
-                                if (!form.checkValidity()) {
-                                    event.preventDefault()
-                                    event.stopPropagation()
-                                }
-                                form.classList.add('was-validated')
-                            }, false)
-                        })
-                })()
-        
-                // Same as shipping address checkbox
-                document.getElementById('sameAsShipping').addEventListener('change', function() {
-                    var billingFields = document.getElementById('billingAddressFields');
-                    billingFields.style.display = this.checked ? 'none' : 'block';
-                });
-        
-                // Progress bar
-                var form = document.getElementById('checkoutForm');
-                var inputs = form.querySelectorAll('input, select');
-                var progressBar = document.querySelector('.progress-bar');
-        
-                inputs.forEach(function(input) {
-                    input.addEventListener('change', updateProgress);
-                });
-        
-                function updateProgress() {
-                    var filledInputs = Array.from(inputs).filter(input => input.value !== '').length;
-                    var progress = (filledInputs / inputs.length) * 100;
-                    progressBar.style.width = progress + '%';
-                    progressBar.setAttribute('aria-valuenow', progress);
-                }
-            </script>
-        </main>
+</div>
 
-        
-    </div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const { createApp } = Vue;
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+createApp({
+  data() {
+    return {
+      carrito: []
+    };
+  },
+  computed: {
+    total() {
+      return this.carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    }
+  },
+  methods: {
+    modificarCantidad(index, cantidad) {
+      const nuevaCantidad = this.carrito[index].cantidad + cantidad;
+      if (nuevaCantidad > 0) {
+        this.carrito[index].cantidad = nuevaCantidad;
+        this.guardarCarrito();
+      }
+    },
+    eliminarProducto(index) {
+      this.carrito.splice(index, 1);
+      this.guardarCarrito();
+    },
+    guardarCarrito() {
+      localStorage.setItem('carrito', JSON.stringify(this.carrito));
+    },
+    pagar() {
+      const items = this.carrito.map(item => ({
+        title: item.nombre,
+        quantity: item.cantidad,
+        unit_price: item.precio,
+        currency_id: "COP"
+      }));
+
+      axios.post("/api/mercadopago/create-preference", items)
+        .then(res => {
+          window.location.href = res.data.init_point;
+        })
+        .catch(err => {
+          console.error("Error al iniciar el pago", err);
+        });
+    },
+    verificarPagoExitoso() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("status") === "success") {
+        const modal = new bootstrap.Modal(document.getElementById("modalExito"));
+        modal.show();
+        localStorage.removeItem("carrito");
+        this.carrito = [];
+      }
+    }
+  },
+  mounted() {
+    this.carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+    this.verificarPagoExitoso();
+  }
+}).mount("#app");
+</script>
 </body>
 </html>

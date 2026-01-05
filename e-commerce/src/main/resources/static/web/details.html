@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del Producto | SOLUCIONES HTL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-white">
+
+  <div id="app" class="container mt-5">
+    <div v-if="producto" class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <div class="producto-con-fondo mb-4">
+          <img :src="producto.imagenUrl" :alt="producto.nombre" />
+        </div>
+        <h2>{{ producto.nombre }}</h2>
+        <p class="lead">{{ producto.descripcion }}</p>
+        <p class="fw-bold fs-4">${{ producto.precio }}</p>
+        <p><strong>Stock:</strong> {{ producto.stock }}</p>
+        <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+        <a href="./index.html" class="btn btn-outline-light mt-3">Volver al inicio</a>
+      </div>
+    </div>
+    <div v-else class="text-center mt-5">
+      <p>Cargando producto...</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./details.js"></script>
+</body>
+</html>
+
